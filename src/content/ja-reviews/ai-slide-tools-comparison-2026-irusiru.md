@@ -34,10 +34,9 @@ heroLabel: "比較ガイド"
 
 注意したいのは、**フリープランではPowerPoint・PDFへの書き出しができない**点です。実務で使うならパーソナル以上が前提になります。パーソナル／パーソナルプラスの年間プランを新規で申し込む場合は、3日間の無料トライアルを利用できます（期間終了後は自動で有料プランに移行）。
 
-<div class="affiliate-slot" data-affiliate-placeholder="イルシル">
-<strong>アフィリエイトリンク挿入予定 — イルシル（A8.net）</strong>
-<div>A8.netで提携承認後、ここに広告リンク（ボタン）を設置します。</div>
-<!-- A8_AFFILIATE_LINK: イルシル -->
+<div class="affiliate-slot" data-affiliate="イルシル">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BFEJSI+5UMS+5YJRM" rel="nofollow sponsored">イルシルを公式サイトで試す（PC向け）</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BFEJSI+5UMS+5YJRM" alt="">
 </div>
 
 ## イルシル vs 他社AIスライドツール
@@ -71,10 +70,9 @@ heroLabel: "比較ガイド"
 
 **編集部評価（定性的）：** 日本語ビジネス資料用途で 4.4/5。英語プレゼンやWeb共有中心の用途では 3.6/5。
 
-<div class="affiliate-slot" data-affiliate-placeholder="イルシル">
-<strong>アフィリエイトリンク挿入予定 — イルシル（A8.net）</strong>
-<div>A8.netで提携承認後、ここに「イルシルを無料で試す」ボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: イルシル -->
+<div class="affiliate-slot" data-affiliate="イルシル">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BFEJSI+5UMS+5YJRM" rel="nofollow sponsored">イルシルを無料で試す</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BFEJSI+5UMS+5YJRM" alt="">
 </div>
 
 画像やバナーのデザインもAIで効率化したい方は、[MiriCanvas 徹底レビュー](/devtoolpick/ja/reviews/miricanvas-review-2026/)もあわせてどうぞ。
