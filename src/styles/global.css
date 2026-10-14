@@ -234,3 +234,14 @@ img { max-width: 100%; height: auto; }
   border-radius: 999px; padding: 0.2rem 0.55rem;
 }
 .related { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+/* Japanese section (/ja/) */
+html[lang="ja"] body {
+  font-family: "Inter", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  line-height: 1.85;
+  word-break: normal;
+  line-break: strict;
+}
+html[lang="ja"] .prose h1,
+html[lang="ja"] .prose h2,
+html[lang="ja"] .prose h3 { letter-spacing: 0; }

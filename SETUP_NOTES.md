@@ -67,3 +67,9 @@ Node 22 is installed locally at `/home/box/.local/node-v22.20.0-linux-x64/bin` (
 
 ## Fix applied 2026-10-15
 - `base` must end with `/` (`/devtoolpick/`) or Astro concatenates paths as `/devtoolpickreviews`.
+
+## Japanese section (added 2026-10-15)
+- Routes: `/ja/` (section home), `/ja/reviews/` (listing), `/ja/reviews/<slug>/`, `/ja/disclosure/`
+- Content collection: `jaReviews` → `src/content/ja-reviews/*.md` (same schema as `reviews`)
+- Layouts/components take `lang="ja"` (BaseLayout, ArticleLayout, Header, Footer, AffiliateDisclosure)
+- A8.net placeholders: `<!-- A8_AFFILIATE_LINK: <Tool> -->` inside `.affiliate-slot` divs (2 per article)

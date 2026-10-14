@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   ogType?: string;
+  lang?: 'en' | 'ja';
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = 'Independent reviews and comparisons of AI coding assistants and developer SaaS tools. Updated for 2026.',
   canonicalPath = Astro.url.pathname,
   ogType = 'website',
+  lang = 'en',
 } = Astro.props;
 
 const siteName = 'DevToolPick';
@@ -22,7 +24,7 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const canonical = new URL(canonicalPath, Astro.site).toString();
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,6 +38,7 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    {lang === 'ja' && <meta property="og:locale" content="ja_JP" />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
@@ -43,12 +46,15 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    {lang === 'ja' && (
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    )}
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

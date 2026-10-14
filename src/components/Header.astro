@@ -1,17 +1,31 @@
 ---
+interface Props {
+  lang?: 'en' | 'ja';
+}
+const { lang = 'en' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href={base}>
+    <a class="brand" href={lang === 'ja' ? `${base}ja/` : base}>
       <span class="brand-mark">D</span>
       <span>DevToolPick</span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href={base}>Home</a>
-      <a href={`${base}reviews/`}>Reviews</a>
-      <a href={`${base}about/`}>About</a>
-      <a href={`${base}disclosure/`}>Disclosure</a>
-    </nav>
+    {lang === 'ja' ? (
+      <nav class="nav-links" aria-label="メインメニュー">
+        <a href={`${base}ja/`}>ホーム</a>
+        <a href={`${base}ja/reviews/`}>レビュー</a>
+        <a href={`${base}ja/disclosure/`}>広告について</a>
+        <a href={base} hreflang="en" lang="en">English</a>
+      </nav>
+    ) : (
+      <nav class="nav-links" aria-label="Primary">
+        <a href={base}>Home</a>
+        <a href={`${base}reviews/`}>Reviews</a>
+        <a href={`${base}about/`}>About</a>
+        <a href={`${base}disclosure/`}>Disclosure</a>
+        <a href={`${base}ja/`} hreflang="ja" lang="ja">日本語</a>
+      </nav>
+    )}
   </div>
 </header>

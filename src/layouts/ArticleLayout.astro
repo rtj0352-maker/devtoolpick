@@ -10,33 +10,39 @@ interface Props {
   updatedDate?: Date;
   tags?: string[];
   heroLabel?: string;
+  lang?: 'en' | 'ja';
 }
 
-const { title, description, pubDate, updatedDate, tags = [], heroLabel } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], heroLabel, lang = 'en' } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const all = (await getCollection('reviews', ({ data }) => !data.draft))
+const isJa = lang === 'ja';
+const collection = isJa ? 'jaReviews' : 'reviews';
+const reviewsPath = isJa ? `${base}ja/reviews/` : `${base}reviews/`;
+const all = (await getCollection(collection, ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .filter((p) => p.data.title !== title)
   .slice(0, 3);
 
 const fmt = (d: Date) =>
-  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  isJa
+    ? d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Tokyo' })
+    : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
-<BaseLayout title={title} description={description} ogType="article">
+<BaseLayout title={title} description={description} ogType="article" lang={lang}>
   <article class="container prose">
     {heroLabel && <div class="badge-row"><span class="badge">{heroLabel}</span></div>}
     <h1>{title}</h1>
     <div class="article-meta">
-      <time datetime={pubDate.toISOString()}>Published {fmt(pubDate)}</time>
+      <time datetime={pubDate.toISOString()}>{isJa ? `公開日 ${fmt(pubDate)}` : `Published ${fmt(pubDate)}`}</time>
       {updatedDate && (
         <>
           {' · '}
-          <time datetime={updatedDate.toISOString()}>Updated {fmt(updatedDate)}</time>
+          <time datetime={updatedDate.toISOString()}>{isJa ? `更新日 ${fmt(updatedDate)}` : `Updated ${fmt(updatedDate)}`}</time>
         </>
       )}
-      {' · '}DevToolPick Editorial
+      {' · '}{isJa ? 'DevToolPick 編集部' : 'DevToolPick Editorial'}
     </div>
-    <AffiliateDisclosure />
+    <AffiliateDisclosure lang={lang} />
     <slot />
     {tags.length > 0 && (
       <div class="tag-list">
@@ -44,10 +50,10 @@ const fmt = (d: Date) =>
       </div>
     )}
     <section class="related">
-      <h2>Keep reading</h2>
+      <h2>{isJa ? 'あわせて読みたい' : 'Keep reading'}</h2>
       <div class="grid-cards">
         {all.map((post) => (
-          <a class="card" href={`${base}reviews/${post.id}/`} style="color:inherit;text-decoration:none">
+          <a class="card" href={`${reviewsPath}${post.id}/`} style="color:inherit;text-decoration:none">
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
           </a>

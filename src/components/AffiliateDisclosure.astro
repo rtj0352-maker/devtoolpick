@@ -1,5 +1,21 @@
-<aside class="disclosure" role="note">
-  <strong>Affiliate disclosure:</strong> DevToolPick may earn a commission if you buy through links on this page — at no extra cost to you.
-  We only recommend tools we’d evaluate for our own workflow. See our
-  <a href={`${import.meta.env.BASE_URL}disclosure/`}>full disclosure</a>.
-</aside>
+---
+interface Props {
+  lang?: 'en' | 'ja';
+}
+const { lang = 'en' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+{lang === 'ja' ? (
+  <aside class="disclosure" role="note">
+    <strong>【PR】この記事はアフィリエイト広告を含みます。</strong>
+    記事内のリンクから商品・サービスを購入・申し込みされた場合、DevToolPickが報酬を受け取ることがあります（読者の方の負担が増えることはありません）。
+    評価・順位は編集部の判断によるものです。詳しくは
+    <a href={`${base}ja/disclosure/`}>広告・アフィリエイトについて</a>をご覧ください。
+  </aside>
+) : (
+  <aside class="disclosure" role="note">
+    <strong>Affiliate disclosure:</strong> DevToolPick may earn a commission if you buy through links on this page — at no extra cost to you.
+    We only recommend tools we’d evaluate for our own workflow. See our
+    <a href={`${base}disclosure/`}>full disclosure</a>.
+  </aside>
+)}
