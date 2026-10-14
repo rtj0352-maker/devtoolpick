@@ -1,0 +1,58 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+  heroLabel?: string;
+}
+
+const { title, description, pubDate, updatedDate, tags = [], heroLabel } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const all = (await getCollection('reviews', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((p) => p.data.title !== title)
+  .slice(0, 3);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="container prose">
+    {heroLabel && <div class="badge-row"><span class="badge">{heroLabel}</span></div>}
+    <h1>{title}</h1>
+    <div class="article-meta">
+      <time datetime={pubDate.toISOString()}>Published {fmt(pubDate)}</time>
+      {updatedDate && (
+        <>
+          {' · '}
+          <time datetime={updatedDate.toISOString()}>Updated {fmt(updatedDate)}</time>
+        </>
+      )}
+      {' · '}DevToolPick Editorial
+    </div>
+    <AffiliateDisclosure />
+    <slot />
+    {tags.length > 0 && (
+      <div class="tag-list">
+        {tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
+    )}
+    <section class="related">
+      <h2>Keep reading</h2>
+      <div class="grid-cards">
+        {all.map((post) => (
+          <a class="card" href={`${base}reviews/${post.id}/`} style="color:inherit;text-decoration:none">
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

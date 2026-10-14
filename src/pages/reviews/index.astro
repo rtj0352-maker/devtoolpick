@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('reviews', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="Reviews & Comparisons"
+  description="All DevToolPick reviews and comparisons of AI coding assistants and developer tools."
+>
+  <section class="container" style="padding:2.5rem 0 3rem">
+    <h1 style="letter-spacing:-0.03em;margin:0 0 0.6rem">Reviews &amp; comparisons</h1>
+    <p style="color:var(--text-muted);max-width:42rem;margin:0 0 1.5rem">
+      Cornerstone guides for choosing AI coding tools in 2026.
+    </p>
+    <div class="grid-cards">
+      {posts.map((post) => (
+        <a class="card" href={`${base}reviews/${post.id}/`} style="color:inherit;text-decoration:none">
+          {post.data.heroLabel && <div class="badge-row"><span class="badge">{post.data.heroLabel}</span></div>}
+          <h3>{post.data.title}</h3>
+          <p>{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

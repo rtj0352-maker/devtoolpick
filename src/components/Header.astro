@@ -1,0 +1,17 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href={base}>
+      <span class="brand-mark">D</span>
+      <span>DevToolPick</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href={base}>Home</a>
+      <a href={`${base}reviews/`}>Reviews</a>
+      <a href={`${base}about/`}>About</a>
+      <a href={`${base}disclosure/`}>Disclosure</a>
+    </nav>
+  </div>
+</header>

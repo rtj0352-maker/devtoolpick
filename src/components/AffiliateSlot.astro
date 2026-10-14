@@ -1,0 +1,17 @@
+---
+interface Props {
+  tool: string;
+  note?: string;
+}
+const { tool, note = 'Replace with your affiliate URL once approved.' } = Astro.props;
+---
+<div class="affiliate-slot" data-affiliate-placeholder={tool}>
+  <strong>Affiliate link placeholder — {tool}</strong>
+  <div>{note}</div>
+  <div style="margin-top:0.45rem">
+    <!-- AFFILIATE_LINK:{tool} -->
+    <a class="btn btn-secondary" href="#" rel="nofollow sponsored noopener" onclick="return false;">
+      Try {tool} (link pending)
+    </a>
+  </div>
+</div>
