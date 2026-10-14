@@ -64,3 +64,6 @@ SITE_URL=https://rtj0352-maker.github.io/devtoolpick BASE_PATH=/devtoolpick npm 
 ```
 
 Node 22 is installed locally at `/home/box/.local/node-v22.20.0-linux-x64/bin` (system Node was 20).
+
+## Fix applied 2026-10-15
+- `base` must end with `/` (`/devtoolpick/`) or Astro concatenates paths as `/devtoolpickreviews`.

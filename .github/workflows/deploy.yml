@@ -30,7 +30,7 @@ jobs:
       - name: Build
         env:
           SITE_URL: https://rtj0352-maker.github.io/devtoolpick
-          BASE_PATH: /devtoolpick
+          BASE_PATH: /devtoolpick/
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
