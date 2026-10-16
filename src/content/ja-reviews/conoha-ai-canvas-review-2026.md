@@ -36,10 +36,9 @@ heroLabel: "徹底レビュー"
 
 無料時間は月ごとにリセットされます。コントロールパネル操作だけでは課金されず、WebUIが起動してから終了するまでが課金対象です。支払い方法はクレジットカード、ConoHaチャージ、ConoHaカードなどに対応しています。
 
-<div class="affiliate-slot" data-affiliate-placeholder="ConoHa AI Canvas">
-<strong>アフィリエイトリンク挿入予定 — ConoHa AI Canvas（A8.net）</strong>
-<div>A8.netで提携承認済み。広告リンクコード取得後、ここにボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: ConoHa AI Canvas -->
+<div class="affiliate-slot" data-affiliate="ConoHa AI Canvas">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BDM8Z6+50+7RTY1E" rel="nofollow sponsored">ConoHa AI Canvasを公式サイトで試す</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BDM8Z6+50+7RTY1E" alt="">
 </div>
 
 ## メリット
@@ -76,10 +75,9 @@ heroLabel: "徹底レビュー"
 
 **編集部評価（定性的）：** 本格SD用途で 4.2/5。月数枚だけのライト用途では 3.4/5。
 
-<div class="affiliate-slot" data-affiliate-placeholder="ConoHa AI Canvas">
-<strong>アフィリエイトリンク挿入予定 — ConoHa AI Canvas（A8.net）</strong>
-<div>A8.netで提携承認済み。ここに「ConoHa AI Canvasを公式で試す」ボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: ConoHa AI Canvas -->
+<div class="affiliate-slot" data-affiliate="ConoHa AI Canvas">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BDM8Z6+50+7RTY1E" rel="nofollow sponsored">ConoHa AI Canvasを無料で試す</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BDM8Z6+50+7RTY1E" alt="">
 </div>
 
 デザイン全般のテンプレート作りなら、[MiriCanvas 徹底レビュー](/devtoolpick/ja/reviews/miricanvas-review-2026/)もあわせてどうぞ。

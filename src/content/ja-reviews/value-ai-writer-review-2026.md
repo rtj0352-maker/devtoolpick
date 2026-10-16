@@ -38,10 +38,9 @@ ChatGPT単体と違い、「SEO向けの見出し構成 → 本文 → 投稿」
 
 各プランには本文生成用の文字数制限があり、モデルごとに枠が分かれています。タイトルと見出しを生成した時点で「1記事」としてカウントされる点には注意が必要です。CORESERVER V2とのバンドル契約では、アップグレード価格が単体より約20〜40%安くなる案内もあります。
 
-<div class="affiliate-slot" data-affiliate-placeholder="Value AI Writer">
-<strong>アフィリエイトリンク挿入予定 — Value AI Writer（A8.net）</strong>
-<div>A8.netで提携承認済み。広告リンクコード取得後、ここにボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: Value AI Writer -->
+<div class="affiliate-slot" data-affiliate="Value AI Writer">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BE7OKY+1JUK+1HL85U" rel="nofollow sponsored">Value AI Writerを公式サイトで試す</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BE7OKY+1JUK+1HL85U" alt="">
 </div>
 
 ## メリット
@@ -78,10 +77,9 @@ HTML変換とWordPress連携があるので、生成 → チェック → 下書
 
 **編集部評価（定性的）：** SEO記事量産用途で 4.3/5。一次情報や取材前提の深い記事では 3.5/5。
 
-<div class="affiliate-slot" data-affiliate-placeholder="Value AI Writer">
-<strong>アフィリエイトリンク挿入予定 — Value AI Writer（A8.net）</strong>
-<div>A8.netで提携承認済み。ここに「Value AI Writerを公式で試す」ボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: Value AI Writer -->
+<div class="affiliate-slot" data-affiliate="Value AI Writer">
+<p><a href="https://px.a8.net/svt/ejp?a8mat=4BEH56+BE7OKY+1JUK+1HL85U" rel="nofollow sponsored">Value AI Writerを無料で試す</a></p>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BEH56+BE7OKY+1JUK+1HL85U" alt="">
 </div>
 
 スライド資料もAIで効率化したい方は、[AIスライド作成ツール比較2026：イルシル vs 他社](/devtoolpick/ja/reviews/ai-slide-tools-comparison-2026-irusiru/)もあわせてどうぞ。
