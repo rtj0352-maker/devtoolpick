@@ -27,11 +27,13 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
-      - name: Build
+      # Type-check, build, then verify links/affiliate rules on dist/.
+      # Any failure stops here, so a bad push never reaches the deploy job.
+      - name: Check and build
         env:
           SITE_URL: https://rtj0352-maker.github.io/devtoolpick
           BASE_PATH: /devtoolpick/
-        run: npm run build
+        run: npm run check
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

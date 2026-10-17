@@ -113,9 +113,9 @@ We did not run a private benchmark suite for this article or invent win-rate per
 
 AI assistants amplify your judgment — they don't replace it. These classics help you review AI-generated code critically:
 
-- **[The Pragmatic Programmer (20th Anniversary Edition)](https://www.amazon.co.jp/dp/0135957052?tag=devtoolpick-22)** — Thomas & Hunt. Habits for owning your code, even when an agent wrote the first draft.
-- **[Modern Software Engineering](https://www.amazon.co.jp/dp/0137314914?tag=devtoolpick-22)** — David Farley. Fast feedback loops and testability, which is exactly what keeps agentic coding safe.
-- **[Clean Code](https://www.amazon.co.jp/dp/0132350882?tag=devtoolpick-22)** — Robert C. Martin. A useful baseline for judging readability of generated code.
+- **<a href="https://www.amazon.co.jp/dp/0135957052?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">The Pragmatic Programmer (20th Anniversary Edition)</a>** — Thomas & Hunt. Habits for owning your code, even when an agent wrote the first draft.
+- **<a href="https://www.amazon.co.jp/dp/0137314914?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">Modern Software Engineering</a>** — David Farley. Fast feedback loops and testability, which is exactly what keeps agentic coding safe.
+- **<a href="https://www.amazon.co.jp/dp/0132350882?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">Clean Code</a>** — Robert C. Martin. A useful baseline for judging readability of generated code.
 
 <!-- TODO(affiliate): dev hardware (keyboard/monitor) picks — add only after verifying real Amazon ASINs. -->
 

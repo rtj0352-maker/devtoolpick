@@ -55,8 +55,8 @@ Comparable agent loops in an editor; worth trialing alongside Cursor. Compare al
 
 ## Books worth reading before a big refactor
 
-- **[Modern Software Engineering](https://www.amazon.co.jp/dp/0137314914?tag=devtoolpick-22)** — David Farley on feedback loops and incremental change.
-- **[The Pragmatic Programmer (20th Anniversary Edition)](https://www.amazon.co.jp/dp/0135957052?tag=devtoolpick-22)** — timeless habits for keeping code changeable.
+- **<a href="https://www.amazon.co.jp/dp/0137314914?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">Modern Software Engineering</a>** — David Farley on feedback loops and incremental change.
+- **<a href="https://www.amazon.co.jp/dp/0135957052?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">The Pragmatic Programmer (20th Anniversary Edition)</a>** — timeless habits for keeping code changeable.
 
 <p class="affiliate-note"><small>Amazon links are affiliate links (Amazon Associates). As an Amazon Associate we earn from qualifying purchases. See our <a href="/devtoolpick/disclosure/">disclosure</a>.</small></p>
 
