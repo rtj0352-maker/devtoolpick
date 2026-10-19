@@ -37,6 +37,11 @@ Japanese section = Japanese AI/SaaS tools, written in natural Japanese, A8.net l
   ```html
   <a href="https://www.amazon.co.jp/dp/0135957052?tag=devtoolpick-22" rel="nofollow sponsored noopener" target="_blank">Title</a>
   ```
+- Design: a standalone `<p><a … rel="nofollow sponsored …">Label</a></p>` is auto-styled as a green CTA button (global.css).
+  In `.astro`/MDX use `src/components/CtaButton.astro`. Official non-affiliate links go in `<div class="official-links">`.
+  Keep reader-visible text free of internal notes ("placeholder", "replace with…"); pending A8 slots are an empty
+  `<div class="affiliate-slot" …><!-- A8_AFFILIATE_LINK: Name --></div>` (hidden by CSS until filled).
+- In Japanese Markdown, `**…）**は` doesn't render as bold (CommonMark CJK rule); use `<strong>…</strong>` there.
 - Any article with Amazon links must also contain: "As an Amazon Associate we earn from qualifying purchases."
 - When a pending A8 program is approved, replace its `<!-- A8_AFFILIATE_LINK: Name -->` placeholder block with the real link.
 

@@ -1,52 +1,83 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import { formatDate } from '../../lib/posts';
 
 const posts = (await getCollection('jaReviews', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const base = import.meta.env.BASE_URL;
+const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ?? p.data.pubDate).valueOf())));
 ---
 <BaseLayout
   title="AIツール・SaaSのレビューと比較【2026年版】"
   description="AI文字起こし・AIスライド作成・AIデザインツールなど、日本で使えるAI/SaaSツールを料金・機能・メリット・デメリットで徹底比較。2026年最新の購入ガイド。"
   lang="ja"
 >
-  <section class="container hero">
-    <div class="badge-row">
-      <span class="badge">日本向けAIツール</span>
-      <span class="badge">料金・機能を比較</span>
-      <span class="badge">2026年10月更新</span>
-    </div>
-    <h1>話題のAIツール、結局どれを選べばいい？</h1>
-    <p class="lead">
-      DevToolPick日本語版では、Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本語で快適に使えるAIツール・SaaSを
-      「料金」「できること」「向いている人」の観点で実用的にレビューしています。
-      無料プランでどこまでできるか、有料プランに払う価値はあるかを、1記事で判断できるようにまとめました。
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href={`${base}ja/reviews/`}>レビュー一覧を見る</a>
-      <a class="btn btn-secondary" href={`${base}ja/reviews/notta-review-2026/`}>Notta レビューから読む</a>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">日本向けAIツール · 料金・機能を比較</p>
+        <h1>話題のAIツール、<span class="grad">結局どれを選べばいい？</span></h1>
+        <p class="lead">
+          Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本語で使えるAIツールを
+          「料金」「できること」「向いている人」で実用的にレビュー。無料でどこまでできるか、有料プランに払う価値はあるかを1記事で判断できます。
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={`${base}ja/reviews/`}>レビュー一覧を見る →</a>
+          <a class="btn btn-secondary" href={`${base}ja/reviews/notta-review-2026/`}>Notta レビューから読む</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong>{posts.length}</strong> 本のレビュー・比較</li>
+          <li>最終更新 <strong>{formatDate(lastUpdated, 'ja', 'long')}</strong></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="container">
-    <h2 class="section-title">注目のレビュー・比較</h2>
+    <div class="section-head">
+      <h2 class="section-title">注目のレビュー・比較</h2>
+      <a class="section-link" href={`${base}ja/reviews/`}>すべて見る →</a>
+    </div>
     <div class="grid-cards">
-      {posts.map((post) => (
-        <a class="card" href={`${base}ja/reviews/${post.id}/`} style="color:inherit;text-decoration:none">
-          {post.data.heroLabel && <div class="badge-row"><span class="badge">{post.data.heroLabel}</span></div>}
-          <h3>{post.data.title}</h3>
-          <p>{post.data.description}</p>
-          <div class="meta">{post.data.pubDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Tokyo' })}</div>
-        </a>
+      {posts.map((post, i) => (
+        <ReviewCard
+          href={`${base}ja/reviews/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          updatedDate={post.data.updatedDate}
+          tags={post.data.tags}
+          heroLabel={post.data.heroLabel}
+          body={post.body}
+          lang="ja"
+          featured={i === 0}
+        />
       ))}
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="features">
+      <div class="feature">
+        <h3>公式情報をもとに解説</h3>
+        <p>料金や機能は可能な限り公式サイトを参照し、記事執筆時点の情報であることを明記しています。</p>
+      </div>
+      <div class="feature">
+        <h3>向き不向きがわかる</h3>
+        <p>メリットだけでなく注意点や「向いている人」もまとめ、自分に合うかを判断しやすくしています。</p>
+      </div>
+      <div class="feature">
+        <h3>広告は明記</h3>
+        <p>アフィリエイト広告（PR）を含む記事は冒頭に明記しています。詳しくは<a href={`${base}ja/disclosure/`}>広告について</a>。</p>
+      </div>
     </div>
   </section>
 
   <section class="container" style="padding-bottom:3rem">
     <div class="note-box">
-      <strong>編集方針：</strong>AIツールの料金や機能は頻繁に変わります。各記事では可能な限り公式情報を参照し、
-      記事執筆時点の情報であることを明記しています。お申し込み前には必ず公式サイトで最新情報をご確認ください。
+      <strong>編集方針：</strong>AIツールの料金や機能は頻繁に変わります。お申し込み前には必ず公式サイトで最新情報をご確認ください。
       当セクションにはアフィリエイト広告（PR）を含む記事があり、該当記事の冒頭に明記しています。
     </div>
   </section>

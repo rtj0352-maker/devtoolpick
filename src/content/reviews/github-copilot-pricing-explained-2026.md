@@ -68,9 +68,8 @@ If your day is long agent sessions on frontier models, Pro can feel like a prepa
 - Run cloud/coding agents as a default workflow  
 - Want more headroom without constant overage toggles
 
-<div class="affiliate-slot" data-affiliate-placeholder="GitHub Copilot">
-<strong>Affiliate link placeholder — GitHub Copilot</strong>
-<div>Add your GitHub/partner affiliate link when available.</div>
+<div class="official-links" data-affiliate-placeholder="GitHub Copilot">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://github.com/features/copilot/plans" rel="noopener">Official Copilot pricing</a></p>
 </div>
 

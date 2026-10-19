@@ -40,9 +40,8 @@ This is the decision page. Four products dominate “which AI coding tool?” se
 
 Legacy Cursor Pro/Pro+/Ultra plans may still apply to existing customers with different metering — check your account.
 
-<div class="affiliate-slot" data-affiliate-placeholder="tool-pack">
-<strong>Affiliate link placeholders</strong>
-<div>Official product pages linked below until partner links are approved.</div>
+<div class="official-links" data-affiliate-placeholder="tool-pack">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://cursor.com" rel="noopener">Cursor</a> ·
 <a href="https://github.com/features/copilot" rel="noopener">GitHub Copilot</a> ·
 <a href="https://devin.ai" rel="noopener">Devin Desktop</a> ·

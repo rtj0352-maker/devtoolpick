@@ -43,9 +43,8 @@ Important mechanics:
 - Limits operate on rolling session windows (Anthropic documents five-hour session behavior) plus weekly caps on paid plans.
 - For sustained heavy agenting, Anthropic documents options like **usage credits** / Console API billing when you exceed subscription limits.
 
-<div class="affiliate-slot" data-affiliate-placeholder="Claude Pro">
-<strong>Affiliate link placeholder — Claude Pro / Max</strong>
-<div>Replace with your Anthropic/partner affiliate URL when approved. Until then, use the official page:</div>
+<div class="official-links" data-affiliate-placeholder="Claude Pro">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://www.anthropic.com/pricing" rel="noopener">Anthropic pricing (official)</a> ·
 <a href="https://claude.com/product/claude-code" rel="noopener">Claude Code product page</a></p>
 </div>

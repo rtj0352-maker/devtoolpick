@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 interface Props {
   lang?: 'en' | 'ja';
 }
@@ -10,18 +11,18 @@ const base = import.meta.env.BASE_URL;
   {lang === 'ja' ? (
     <div class="container footer-grid">
       <div>
-        <strong style="color:var(--text)">DevToolPick 日本語版</strong>
+        <strong class="footer-brand"><Logo size={24} /> DevToolPick 日本語版</strong>
         <p>日本で使えるAIツール・SaaSを、料金・機能・向き不向きの観点で実用的にレビューしています。料金や機能は頻繁に変わるため、ご購入前に必ず公式サイトでご確認ください。</p>
         <p>© {year} DevToolPick. 記載の製品名は各社の商標または登録商標です。</p>
       </div>
       <div>
-        <strong style="color:var(--text)">メニュー</strong>
+        <strong class="footer-head">メニュー</strong>
         <p><a href={`${base}ja/reviews/`}>レビュー一覧</a></p>
         <p><a href={`${base}ja/disclosure/`}>広告・アフィリエイトについて</a></p>
         <p><a href={base} hreflang="en" lang="en">English site</a></p>
       </div>
       <div>
-        <strong style="color:var(--text)">読者の方へ</strong>
+        <strong class="footer-head">読者の方へ</strong>
         <p>本セクションの記事にはアフィリエイト広告（PR）を含む場合があります。</p>
         <p>評価は編集部の判断によるもので、広告主による順位の操作はありません。</p>
       </div>
@@ -29,19 +30,19 @@ const base = import.meta.env.BASE_URL;
   ) : (
     <div class="container footer-grid">
       <div>
-        <strong style="color:var(--text)">DevToolPick</strong>
+        <strong class="footer-brand"><Logo size={24} /> DevToolPick</strong>
         <p>Practical, buyer-intent reviews of AI coding assistants and developer SaaS tools. We update pricing and feature notes when vendors change them — always verify on official pages before you buy.</p>
         <p>© {year} DevToolPick. All product names are trademarks of their owners.</p>
       </div>
       <div>
-        <strong style="color:var(--text)">Explore</strong>
+        <strong class="footer-head">Explore</strong>
         <p><a href={`${base}reviews/`}>All reviews</a></p>
         <p><a href={`${base}about/`}>About</a></p>
         <p><a href={`${base}disclosure/`}>Affiliate disclosure</a></p>
         <p><a href={`${base}ja/`} hreflang="ja" lang="ja">日本語版（Japanese）</a></p>
       </div>
       <div>
-        <strong style="color:var(--text)">For readers</strong>
+        <strong class="footer-head">For readers</strong>
         <p>Built for developers choosing tools, not for hype.</p>
         <p>Prices and plans change often. Check the vendor before purchasing.</p>
       </div>

@@ -7,7 +7,7 @@ tags: ["MiriCanvas", "ミリキャンバス", "AIデザイン", "レビュー"]
 heroLabel: "徹底レビュー"
 ---
 
-SNS投稿の画像、ブログのアイキャッチ、チラシやプレゼン資料。デザインの専門スキルがなくても「それなりに見栄えのする」制作物を短時間で作りたい人に人気なのが、ブラウザで使えるデザインツール**MiriCanvas（ミリキャンバス）**です。
+SNS投稿の画像、ブログのアイキャッチ、チラシやプレゼン資料。デザインの専門スキルがなくても「それなりに見栄えのする」制作物を短時間で作りたい人に人気なのが、ブラウザで使えるデザインツール<strong>MiriCanvas（ミリキャンバス）</strong>です。
 
 本記事では、MiriCanvasの機能・料金・メリットとデメリットを整理したうえで、Canvaなどの代替ツールとも比較します。
 
@@ -38,11 +38,7 @@ Proの価格は、2026年時点で**月額980円・年額9,480円（税込）程
 
 また、スマホアプリから課金するとストア手数料の関係でWebと価格が異なる場合があります。お得に契約したいならWeb版からの申し込みがおすすめです。
 
-<div class="affiliate-slot" data-affiliate-placeholder="MiriCanvas">
-<strong>アフィリエイトリンク挿入予定 — MiriCanvas（A8.net）</strong>
-<div>A8.netで提携承認後、ここに広告リンク（ボタン）を設置します。</div>
-<!-- A8_AFFILIATE_LINK: MiriCanvas -->
-</div>
+<div class="affiliate-slot" data-affiliate-placeholder="MiriCanvas"><!-- A8_AFFILIATE_LINK: MiriCanvas --></div>
 
 ## MiriCanvasのメリット
 
@@ -88,8 +84,4 @@ MiriCanvasは、**無料でも始めやすく、Proも手頃な価格でAI機能
 
 **編集部評価（定性的）：** コスパ重視のデザイン用途で 4.2/5。プロ向けの高度な編集用途では 3.2/5。
 
-<div class="affiliate-slot" data-affiliate-placeholder="MiriCanvas">
-<strong>アフィリエイトリンク挿入予定 — MiriCanvas（A8.net）</strong>
-<div>A8.netで提携承認後、ここに「MiriCanvasを無料で始める」ボタンを設置します。</div>
-<!-- A8_AFFILIATE_LINK: MiriCanvas -->
-</div>
+<div class="affiliate-slot" data-affiliate-placeholder="MiriCanvas"><!-- A8_AFFILIATE_LINK: MiriCanvas --></div>

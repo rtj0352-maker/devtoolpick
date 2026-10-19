@@ -1,0 +1,15 @@
+---
+// Styled affiliate call-to-action for .astro pages / MDX.
+// In Markdown, write a standalone `<p><a href=".." rel="nofollow sponsored noopener">..</a></p>`;
+// global.css styles it as the same button automatically.
+interface Props {
+  href: string;
+  label: string;
+  note?: string;
+}
+const { href, label, note } = Astro.props;
+---
+<p class="cta-block">
+  <a class="btn btn-cta" href={href} rel="nofollow sponsored noopener" target="_blank">{label}</a>
+  {note && <span class="cta-note">{note}</span>}
+</p>

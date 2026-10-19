@@ -20,9 +20,12 @@ Python is where most AI coding assistants are strongest — the training data is
 | Large refactors, type-hint migrations, test backfills | **Claude Code** | Terminal agent that can run `pytest`, read failures, and iterate |
 | Agentic multi-step tasks in an editor | **Devin Desktop** | Agent loops inside a VS Code-style editor |
 
-<div class="affiliate-slot" data-affiliate-placeholder="python-tool-pack">
-<strong>Partner links coming soon.</strong>
-<div>Replace with approved partner URLs. Do not invent affiliate URLs.</div>
+<div class="official-links" data-affiliate-placeholder="python-tool-pack">
+<strong>Check current plans on the official sites</strong>
+<p><a href="https://github.com/features/copilot" rel="noopener">GitHub Copilot</a> ·
+<a href="https://cursor.com" rel="noopener">Cursor</a> ·
+<a href="https://devin.ai" rel="noopener">Devin Desktop</a> ·
+<a href="https://claude.com/product/claude-code" rel="noopener">Claude Code</a></p>
 </div>
 
 ## What matters for Python specifically

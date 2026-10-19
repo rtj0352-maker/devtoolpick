@@ -27,9 +27,8 @@ This guide compares the four tools most developers shortlist today:
 | Agentic editor with Cognition’s stack | **Devin Desktop** | Cascade-style multi-step loops; Free/Pro/Max self-serve |
 | Terminal-native deep refactors | **Claude Code** | Repo-aware agent in the shell; included with Claude paid plans |
 
-<div class="affiliate-slot" data-affiliate-placeholder="tool-pack">
-<strong>Affiliate link placeholders</strong>
-<div>Replace with approved partner URLs for Copilot / Cursor / Devin Desktop / Claude. Do not invent affiliate URLs.</div>
+<div class="official-links" data-affiliate-placeholder="tool-pack">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://github.com/features/copilot" rel="noopener">GitHub Copilot (official)</a> ·
 <a href="https://cursor.com" rel="noopener">Cursor (official)</a> ·
 <a href="https://devin.ai" rel="noopener">Devin (official)</a> ·

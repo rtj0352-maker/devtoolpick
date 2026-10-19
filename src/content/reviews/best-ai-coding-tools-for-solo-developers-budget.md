@@ -37,8 +37,8 @@ This stack is enough to learn workflows. It is usually **not** enough for full-t
 **GitHub Copilot Pro ($10/mo)**  
 Still the value king if you want broad IDE support and GitHub workflows. Watch AI Credit usage if you lean on agents/chat.
 
-<div class="affiliate-slot" data-affiliate-placeholder="GitHub Copilot">
-<strong>Affiliate link placeholder — GitHub Copilot</strong>
+<div class="official-links" data-affiliate-placeholder="GitHub Copilot">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://github.com/features/copilot/plans" rel="noopener">Official Copilot plans</a></p>
 </div>
 
@@ -51,8 +51,8 @@ Two strong forks in the road:
 
 Pick Claude Pro if you already like Claude and terminal workflows. Pick Devin Pro if you want the agent inside an IDE-like surface.
 
-<div class="affiliate-slot" data-affiliate-placeholder="Claude / Devin">
-<strong>Affiliate link placeholders — Claude Pro & Devin Pro</strong>
+<div class="official-links" data-affiliate-placeholder="Claude / Devin">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://www.anthropic.com/pricing" rel="noopener">Claude pricing</a> ·
 <a href="https://devin.ai/pricing" rel="noopener">Devin pricing</a></p>
 </div>
@@ -63,8 +63,8 @@ Pick Claude Pro if you already like Claude and terminal workflows. Pick Devin Pr
 
 Plus ($8/mo) is cheaper but limited to Cursor’s own models with fixed settings — fine for light use, often insufficient if you specifically need Claude/GPT inside Cursor.
 
-<div class="affiliate-slot" data-affiliate-placeholder="Cursor">
-<strong>Affiliate link placeholder — Cursor</strong>
+<div class="official-links" data-affiliate-placeholder="Cursor">
+<strong>Check current plans on the official sites</strong>
 <p><a href="https://cursor.com/docs/account/pricing" rel="noopener">Cursor models & pricing docs</a></p>
 </div>
 

@@ -1,8 +1,11 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ReviewCard from '../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import { formatDate, readingMinutes, readingLabel } from '../lib/posts';
 
+interface Heading { depth: number; slug: string; text: string }
 interface Props {
   title: string;
   description: string;
@@ -11,54 +14,94 @@ interface Props {
   tags?: string[];
   heroLabel?: string;
   lang?: 'en' | 'ja';
+  headings?: Heading[];
+  body?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], heroLabel, lang = 'en' } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], heroLabel, lang = 'en', headings = [], body } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const isJa = lang === 'ja';
 const collection = isJa ? 'jaReviews' : 'reviews';
 const reviewsPath = isJa ? `${base}ja/reviews/` : `${base}reviews/`;
-const all = (await getCollection(collection, ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .filter((p) => p.data.title !== title)
-  .slice(0, 3);
 
-const fmt = (d: Date) =>
-  isJa
-    ? d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Tokyo' })
-    : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+// Related: most shared tags first, then newest.
+const related = (await getCollection(collection, ({ data }) => !data.draft))
+  .filter((p) => p.data.title !== title)
+  .map((p) => ({ p, score: p.data.tags.filter((t) => tags.includes(t)).length }))
+  .sort((a, b) => b.score - a.score || b.p.data.pubDate.valueOf() - a.p.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((x) => x.p);
+
+const toc = headings.filter((h) => h.depth === 2);
+const mins = readingMinutes(body, lang);
 ---
 <BaseLayout title={title} description={description} ogType="article" lang={lang}>
-  <article class="container prose">
-    {heroLabel && <div class="badge-row"><span class="badge">{heroLabel}</span></div>}
-    <h1>{title}</h1>
-    <div class="article-meta">
-      <time datetime={pubDate.toISOString()}>{isJa ? `公開日 ${fmt(pubDate)}` : `Published ${fmt(pubDate)}`}</time>
-      {updatedDate && (
-        <>
-          {' · '}
-          <time datetime={updatedDate.toISOString()}>{isJa ? `更新日 ${fmt(updatedDate)}` : `Updated ${fmt(updatedDate)}`}</time>
-        </>
+  <div class="container article-wrap">
+    <nav class="breadcrumbs" aria-label={isJa ? 'パンくずリスト' : 'Breadcrumb'}>
+      <a href={isJa ? `${base}ja/` : base}>{isJa ? 'ホーム' : 'Home'}</a>
+      <span aria-hidden="true">/</span>
+      <a href={reviewsPath}>{isJa ? 'レビュー' : 'Reviews'}</a>
+    </nav>
+    <header class="article-head">
+      {heroLabel && <span class="badge">{heroLabel}</span>}
+      <h1>{title}</h1>
+      <p class="article-lead">{description}</p>
+      <div class="article-meta">
+        <span>{isJa ? 'DevToolPick 編集部' : 'DevToolPick Editorial'}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime={pubDate.toISOString()}>{isJa ? `公開日 ${formatDate(pubDate, lang, 'long')}` : `Published ${formatDate(pubDate, lang, 'long')}`}</time>
+        {updatedDate && (
+          <>
+            <span aria-hidden="true">·</span>
+            <time datetime={updatedDate.toISOString()}>{isJa ? `更新日 ${formatDate(updatedDate, lang, 'long')}` : `Updated ${formatDate(updatedDate, lang, 'long')}`}</time>
+          </>
+        )}
+        <span aria-hidden="true">·</span>
+        <span>{readingLabel(mins, lang)}</span>
+      </div>
+    </header>
+    <div class="disclosure-wrap"><AffiliateDisclosure lang={lang} /></div>
+
+    <div class:list={['article-grid', { 'has-toc': toc.length >= 3 }]}>
+      {toc.length >= 3 && (
+        <aside class="toc">
+          <details open>
+            <summary>{isJa ? '目次' : 'On this page'}</summary>
+            <ol>
+              {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            </ol>
+          </details>
+        </aside>
       )}
-      {' · '}{isJa ? 'DevToolPick 編集部' : 'DevToolPick Editorial'}
+      <article class="prose">
+        <slot />
+        {tags.length > 0 && (
+          <ul class="tag-list" aria-label={isJa ? 'タグ' : 'Tags'}>
+            {tags.map((t) => <li class="tag">{t}</li>)}
+          </ul>
+        )}
+      </article>
     </div>
-    <AffiliateDisclosure lang={lang} />
-    <slot />
-    {tags.length > 0 && (
-      <div class="tag-list">
-        {tags.map((t) => <span class="tag">{t}</span>)}
-      </div>
+
+    {related.length > 0 && (
+      <section class="related">
+        <h2 class="section-title">{isJa ? 'あわせて読みたい' : 'Keep reading'}</h2>
+        <div class="grid-cards">
+          {related.map((post) => (
+            <ReviewCard
+              href={`${reviewsPath}${post.id}/`}
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate}
+              updatedDate={post.data.updatedDate}
+              tags={post.data.tags}
+              heroLabel={post.data.heroLabel}
+              body={post.body}
+              lang={lang}
+            />
+          ))}
+        </div>
+      </section>
     )}
-    <section class="related">
-      <h2>{isJa ? 'あわせて読みたい' : 'Keep reading'}</h2>
-      <div class="grid-cards">
-        {all.map((post) => (
-          <a class="card" href={`${reviewsPath}${post.id}/`} style="color:inherit;text-decoration:none">
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-          </a>
-        ))}
-      </div>
-    </section>
-  </article>
+  </div>
 </BaseLayout>

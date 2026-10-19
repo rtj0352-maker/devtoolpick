@@ -1,63 +1,89 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ReviewCard from '../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import { formatDate } from '../lib/posts';
 
 const posts = (await getCollection('reviews', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const jaCount = (await getCollection('jaReviews', ({ data }) => !data.draft)).length;
 const base = import.meta.env.BASE_URL;
+const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ?? p.data.pubDate).valueOf())));
+const roundup = posts.find((p) => p.id === 'best-ai-coding-assistants-2026');
 ---
 <BaseLayout
   title="DevToolPick"
   description="Independent reviews and comparisons of AI coding assistants and developer SaaS tools. Buyer-intent guides updated for 2026."
 >
-  <section class="container hero">
-    <div class="badge-row">
-      <span class="badge">AI coding tools</span>
-      <span class="badge">Buyer-intent reviews</span>
-      <span class="badge">Updated Oct 2026</span>
-    </div>
-    <h1>Pick the right AI coding tool — without the hype.</h1>
-    <p class="lead">
-      DevToolPick publishes practical comparisons and reviews of AI coding assistants and developer SaaS:
-      Cursor, GitHub Copilot, Claude Code, Devin Desktop (formerly Windsurf), and more.
-      We focus on workflow fit, real pricing, and trade-offs — so you can decide in one sitting.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href={`${base}reviews/`}>Browse reviews</a>
-      <a class="btn btn-secondary" href={`${base}reviews/best-ai-coding-assistants-2026/`}>Start with the 2026 roundup</a>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">AI coding tools · Buyer-intent reviews</p>
+        <h1>Pick the right AI coding tool <span class="grad">— without the hype.</span></h1>
+        <p class="lead">
+          Practical comparisons of Cursor, GitHub Copilot, Claude Code, Devin Desktop (formerly Windsurf) and more.
+          Workflow fit, real pricing and trade-offs — so you can decide in one sitting.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={`${base}reviews/`}>Browse all reviews →</a>
+          {roundup && <a class="btn btn-secondary" href={`${base}reviews/${roundup.id}/`}>Start with the 2026 roundup</a>}
+        </div>
+        <ul class="hero-stats">
+          <li><strong>{posts.length}</strong> English guides</li>
+          <li><strong>{jaCount}</strong> 日本語レビュー</li>
+          <li>Updated <strong>{formatDate(lastUpdated, 'en')}</strong></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="container">
-    <h2 class="section-title">Cornerstone guides</h2>
+    <div class="section-head">
+      <h2 class="section-title">Latest reviews &amp; comparisons</h2>
+      <a class="section-link" href={`${base}reviews/`}>See all →</a>
+    </div>
     <div class="grid-cards">
-      {posts.map((post) => (
-        <a class="card" href={`${base}reviews/${post.id}/`} style="color:inherit;text-decoration:none">
-          {post.data.heroLabel && <div class="badge-row"><span class="badge">{post.data.heroLabel}</span></div>}
-          <h3>{post.data.title}</h3>
-          <p>{post.data.description}</p>
-          <div class="meta">{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</div>
-        </a>
+      {posts.map((post, i) => (
+        <ReviewCard
+          href={`${base}reviews/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          updatedDate={post.data.updatedDate}
+          tags={post.data.tags}
+          heroLabel={post.data.heroLabel}
+          body={post.body}
+          featured={i === 0}
+        />
       ))}
     </div>
   </section>
 
   <section class="container">
-    <h2 class="section-title">日本語版 / Japanese section</h2>
-    <div class="grid-cards">
-      <a class="card" href={`${base}ja/`} hreflang="ja" lang="ja" style="color:inherit;text-decoration:none">
-        <div class="badge-row"><span class="badge">日本語</span></div>
-        <h3>DevToolPick 日本語版</h3>
-        <p>Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本で使えるAIツール・SaaSのレビューと比較（2026年版）。</p>
-      </a>
+    <div class="features">
+      <div class="feature">
+        <h3>Workflow fit first</h3>
+        <p>We compare where each tool lives — IDE extension, AI-native editor or terminal agent — and who it suits.</p>
+      </div>
+      <div class="feature">
+        <h3>Pricing from official pages</h3>
+        <p>Plans change fast. Articles cite vendor pages with the date we checked, and remind you to verify before buying.</p>
+      </div>
+      <div class="feature">
+        <h3>Clear disclosures</h3>
+        <p>Affiliate links are labeled on every page that has them. See our <a href={`${base}disclosure/`}>disclosure</a>.</p>
+      </div>
     </div>
   </section>
 
   <section class="container" style="padding-bottom:3rem">
-    <div class="note-box">
-      <strong>How we work:</strong> Pricing and features change fast in this category.
-      Every article cites official sources where possible and reminds you to verify before purchase.
-      Affiliate links are clearly marked once we join partner programs.
-    </div>
+    <a class="ja-banner" href={`${base}ja/`} hreflang="ja" lang="ja">
+      <div>
+        <span class="badge">日本語版</span>
+        <h2>DevToolPick 日本語版</h2>
+        <p>Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本で使えるAIツール・SaaSのレビューと比較（2026年版）。</p>
+      </div>
+      <span class="btn btn-secondary">日本語版を見る →</span>
+    </a>
   </section>
 </BaseLayout>

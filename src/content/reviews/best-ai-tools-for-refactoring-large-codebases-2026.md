@@ -20,9 +20,12 @@ Autocomplete doesn’t help much when the job is “rename this concept across 4
 | Team-wide, PR-based refactors on GitHub | **GitHub Copilot** | Agent work lands as reviewable pull requests |
 | Long agentic tasks inside an editor | **Devin Desktop** | Multi-step agent loops in a VS Code-style editor |
 
-<div class="affiliate-slot" data-affiliate-placeholder="refactor-tool-pack">
-<strong>Partner links coming soon.</strong>
-<div>Replace with approved partner URLs. Do not invent affiliate URLs.</div>
+<div class="official-links" data-affiliate-placeholder="refactor-tool-pack">
+<strong>Check current plans on the official sites</strong>
+<p><a href="https://github.com/features/copilot" rel="noopener">GitHub Copilot</a> ·
+<a href="https://cursor.com" rel="noopener">Cursor</a> ·
+<a href="https://devin.ai" rel="noopener">Devin Desktop</a> ·
+<a href="https://claude.com/product/claude-code" rel="noopener">Claude Code</a></p>
 </div>
 
 ## Why large codebases are different
