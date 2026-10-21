@@ -23,6 +23,7 @@ This guide compares the four tools most developers shortlist today:
 <strong>Quick verdict</strong>
 <p>There is no single winner — pick by where you want the agent to live. Most developers who don’t want to change editors should start with <strong>GitHub Copilot</strong>; agent-first editing fans should trial <strong>Cursor</strong>; terminal-native engineers doing hard refactors get the most from <strong>Claude Code</strong>.</p>
 </div>
+
 ## Quick picks
 
 | If you want… | Start with | Why |
