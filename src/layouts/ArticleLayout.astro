@@ -42,7 +42,7 @@ const mins = readingMinutes(body, lang);
       <span aria-hidden="true">/</span>
       <a href={reviewsPath}>{isJa ? 'レビュー' : 'Reviews'}</a>
     </nav>
-    <header class="article-head">
+    <header class="article-head" data-reveal>
       {heroLabel && <span class="badge">{heroLabel}</span>}
       <h1>{title}</h1>
       <p class="article-lead">{description}</p>
@@ -82,6 +82,22 @@ const mins = readingMinutes(body, lang);
         )}
       </article>
     </div>
+
+    <aside class="lang-cross" data-reveal>
+      {isJa ? (
+        <a href={`${base}reviews/`} hreflang="en" lang="en">
+          <span class="badge">English</span>
+          <strong>Developer? Read our English AI coding tool reviews →</strong>
+          <span>Cursor, GitHub Copilot, Claude Code and more, compared by workflow fit and pricing.</span>
+        </a>
+      ) : (
+        <a href={`${base}ja/reviews/`} hreflang="ja" lang="ja">
+          <span class="badge">日本語</span>
+          <strong>日本語のAIツールレビューも読む →</strong>
+          <span>Notta・イルシル・Catchyなど、日本で使える業務効率化AIを料金と無料枠で比較。</span>
+        </a>
+      )}
+    </aside>
 
     {related.length > 0 && (
       <section class="related">

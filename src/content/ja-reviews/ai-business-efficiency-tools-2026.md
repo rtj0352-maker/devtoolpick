@@ -11,6 +11,11 @@ heroLabel: "まとめ"
 
 > 料金・機能は2026年10月21日（日本時間）時点で各公式サイト（[Notta](https://www.notta.ai/pricing)、[イルシル](https://irusiru.jp/)、[Catchy](https://lp.ai-copywriter.jp/)、[Value AI Writer](https://www.value-domain.com/value-aiwriter/)、[ConoHa AI Canvas](https://ai.conoha.jp/canvas/pricing/)）を確認した内容です。変更される場合があるため、申し込み前に必ず公式サイトでご確認ください。
 
+<div class="verdict">
+<strong>結論</strong>
+<p>迷ったら「一番時間を取られている業務」から1つだけ選びましょう。会議が多いなら<strong>Notta</strong>、資料作りなら<strong>イルシル</strong>、短いコピーなら<strong>Catchy</strong>、ブログ記事なら<strong>Value AI Writer</strong>、画像生成なら<strong>ConoHa AI Canvas</strong>です。</p>
+</div>
+
 ## 業務別おすすめ早見表
 
 | 業務 | ツール | 無料で使える範囲 | 有料プランの目安 |
@@ -81,3 +86,9 @@ heroLabel: "まとめ"
 1. <strong>一番時間を取られている業務から選ぶ</strong>：会議が多いならNotta、資料作りならイルシル、というように一つに絞って始めます。
 2. <strong>無料枠で「自分の仕事で使えるか」を確かめる</strong>：機能の多さより、自分の素材で試した結果で判断しましょう。
 3. <strong>AIの出力は必ず確認する</strong>：文字起こしの聞き間違いや、文章の事実誤認はゼロにはなりません。最終チェックは人が行う前提で使うのが安全です。
+
+## よくある質問
+
+<details class="faq"><summary>全部無料で試せますか？</summary><div><p>Notta・イルシル・Catchy・Value AI Writerには無料プランがあります。ConoHa AI Canvasには無料プランはありませんが、各プランに無料のWebUI時間が含まれます（2026年10月21日時点）。</p></div></details>
+<details class="faq"><summary>最初にどれを契約すべきですか？</summary><div><p>一番時間を取られている業務に対応するツールを1つだけ選び、無料枠で自分の素材を使って試してから判断するのがおすすめです。</p></div></details>
+<details class="faq"><summary>AIの出力はそのまま使えますか？</summary><div><p>文字起こしの聞き間違いや文章の事実誤認はゼロにはなりません。最終チェックは人が行う前提で使ってください。</p></div></details>

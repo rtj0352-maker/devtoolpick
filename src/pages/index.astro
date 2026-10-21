@@ -9,79 +9,160 @@ const posts = (await getCollection('reviews', ({ data }) => !data.draft))
 const jaCount = (await getCollection('jaReviews', ({ data }) => !data.draft)).length;
 const base = import.meta.env.BASE_URL;
 const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ?? p.data.pubDate).valueOf())));
-const roundup = posts.find((p) => p.id === 'best-ai-coding-assistants-2026');
+const r = (id: string) => `${base}reviews/${id}/`;
+const byId = (id: string) => posts.find((p) => p.id === id);
+
+// Top picks: summarised from the roundup's "Quick picks" table (prices checked 2026-10-15 JST, see article).
+const picks = [
+  { name: 'GitHub Copilot', kind: 'IDE extension', for: 'Teams on GitHub who don’t want to switch editors', price: 'Free · Pro $10/mo', href: r('github-copilot-pricing-explained-2026'), cta: 'Copilot pricing explained' },
+  { name: 'Cursor', kind: 'AI-native editor', for: 'Developers who want an agent-first editing loop', price: 'Free · Plus $8/mo · Premium $30/mo', href: r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code'), cta: 'See the head-to-head' },
+  { name: 'Claude Code', kind: 'Terminal agent', for: 'Engineers doing deep, multi-file refactors', price: 'With Claude Pro $20/mo', href: r('claude-code-review-2026'), cta: 'Read the review' },
+  { name: 'Devin Desktop', kind: 'Agentic IDE (ex-Windsurf)', for: 'Fans of Cascade-style multi-step agents', price: 'Free · Pro $20/mo', href: r('best-ai-coding-assistants-2026'), cta: 'Compare in the roundup' },
+];
+
+const categories = [
+  { title: 'Start here', blurb: 'The big picture and the decision page.', ids: ['best-ai-coding-assistants-2026', 'cursor-vs-copilot-vs-devin-desktop-vs-claude-code'] },
+  { title: 'On a budget', blurb: 'Free tiers and cheap stacks that still work.', ids: ['best-free-ai-coding-assistants-2026', 'best-ai-coding-tools-for-solo-developers-budget', 'github-copilot-pricing-explained-2026'] },
+  { title: 'By job to be done', blurb: 'Python, refactoring, code review and terminal agents.', ids: ['best-ai-coding-tools-for-python-developers-2026', 'best-ai-tools-for-refactoring-large-codebases-2026', 'best-ai-code-review-tools-2026', 'claude-code-review-2026'] },
+].map((c) => ({ ...c, items: c.ids.map(byId).filter((p) => p !== undefined) }));
 ---
 <BaseLayout
   title="DevToolPick"
   description="Independent reviews and comparisons of AI coding assistants and developer SaaS tools. Buyer-intent guides updated for 2026."
 >
   <section class="hero">
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><i class="grid-bg"></i></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">AI coding tools · Buyer-intent reviews</p>
-        <h1>Pick the right AI coding tool <span class="grad">— without the hype.</span></h1>
+        <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Updated {formatDate(lastUpdated, 'en', 'long')}</p>
+        <h1>Pick the right AI coding tool <span class="grad">in one sitting.</span></h1>
         <p class="lead">
-          Practical comparisons of Cursor, GitHub Copilot, Claude Code, Devin Desktop (formerly Windsurf) and more.
-          Workflow fit, real pricing and trade-offs — so you can decide in one sitting.
+          Cursor, GitHub Copilot, Claude Code or Devin Desktop? We compare where each tool lives in your workflow,
+          what it really costs, and the trade-offs vendors don’t put on the landing page. Pricing is checked on official pages, with dates.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href={`${base}reviews/`}>Browse all reviews →</a>
-          {roundup && <a class="btn btn-secondary" href={`${base}reviews/${roundup.id}/`}>Start with the 2026 roundup</a>}
+          <a class="btn btn-primary btn-shine" href={r('best-ai-coding-assistants-2026')}>Start with the 2026 roundup <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-secondary" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')}>Compare all four</a>
         </div>
         <ul class="hero-stats">
           <li><strong>{posts.length}</strong> English guides</li>
           <li><strong>{jaCount}</strong> 日本語レビュー</li>
-          <li>Updated <strong>{formatDate(lastUpdated, 'en')}</strong></li>
+          <li>Prices cited <strong>with check dates</strong></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="container">
-    <div class="section-head">
-      <h2 class="section-title">Latest reviews &amp; comparisons</h2>
-      <a class="section-link" href={`${base}reviews/`}>See all →</a>
+  <section class="container section">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="kicker">Top picks</p>
+        <h2 class="section-title">The short answer, by workflow</h2>
+      </div>
+      <a class="section-link" href={r('best-ai-coding-assistants-2026')}>Full roundup →</a>
     </div>
-    <div class="grid-cards">
-      {posts.map((post, i) => (
-        <ReviewCard
-          href={`${base}reviews/${post.id}/`}
-          title={post.data.title}
-          description={post.data.description}
-          pubDate={post.data.pubDate}
-          updatedDate={post.data.updatedDate}
-          tags={post.data.tags}
-          heroLabel={post.data.heroLabel}
-          body={post.body}
-          featured={i === 0}
-        />
+    <div class="picks">
+      {picks.map((p, i) => (
+        <a class="pick" href={p.href} data-reveal>
+          <span class="card-glow" aria-hidden="true"></span>
+          <span class="pick-rank">0{i + 1}</span>
+          <span class="pick-kind">{p.kind}</span>
+          <strong class="pick-name">{p.name}</strong>
+          <span class="pick-for">{p.for}</span>
+          <span class="pick-price">{p.price}</span>
+          <span class="card-cta">{p.cta} →</span>
+        </a>
       ))}
     </div>
+    <p class="fine-print" data-reveal>Entry prices for individuals as checked on vendor pages around Oct 15, 2026 (JST). Plans change often — verify before buying.</p>
   </section>
 
-  <section class="container">
-    <div class="features">
-      <div class="feature">
-        <h3>Workflow fit first</h3>
-        <p>We compare where each tool lives — IDE extension, AI-native editor or terminal agent — and who it suits.</p>
+  <section class="container section">
+    <div class="compare-strip" data-reveal>
+      <div class="section-head">
+        <div>
+          <p class="kicker">At a glance</p>
+          <h2 class="section-title">How the four differ</h2>
+        </div>
+        <a class="section-link" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')}>Full matrix →</a>
       </div>
-      <div class="feature">
-        <h3>Pricing from official pages</h3>
-        <p>Plans change fast. Articles cite vendor pages with the date we checked, and remind you to verify before buying.</p>
-      </div>
-      <div class="feature">
-        <h3>Clear disclosures</h3>
-        <p>Affiliate links are labeled on every page that has them. See our <a href={`${base}disclosure/`}>disclosure</a>.</p>
+      <div class="table-scroll">
+        <table class="mini-table">
+          <thead><tr><th scope="col"></th><th scope="col">Copilot</th><th scope="col">Cursor</th><th scope="col">Devin Desktop</th><th scope="col">Claude Code</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Form factor</th><td>IDE extension</td><td>Own editor</td><td>Own editor</td><td>Terminal agent</td></tr>
+            <tr><th scope="row">Keep your IDE</th><td><span class="yes">Yes</span></td><td>No</td><td>No</td><td>Works alongside</td></tr>
+            <tr><th scope="row">Pricing shape</th><td>Seat + AI Credits</td><td>Weekly pool</td><td>Daily/weekly quota</td><td>Shared Claude limits</td></tr>
+            <tr><th scope="row">Best day-1 feel</th><td>Familiar</td><td>Powerful after switch</td><td>Powerful after switch</td><td>If you like terminals</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <section class="container" style="padding-bottom:3rem">
-    <a class="ja-banner" href={`${base}ja/`} hreflang="ja" lang="ja">
+  {categories.map((c) => (
+    <section class="container section">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="kicker">{c.title}</p>
+          <h2 class="section-title">{c.blurb}</h2>
+        </div>
+      </div>
+      <div class="grid-cards">
+        {c.items.map((post) => (
+          <ReviewCard
+            href={r(post.id)}
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            updatedDate={post.data.updatedDate}
+            tags={post.data.tags}
+            heroLabel={post.data.heroLabel}
+            body={post.body}
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section class="container section">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="kicker">How we review</p>
+        <h2 class="section-title">Honest by design</h2>
+      </div>
+      <a class="section-link" href={`${base}about/`}>About us →</a>
+    </div>
+    <div class="features">
+      <div class="feature" data-reveal>
+        <span class="feature-icon" aria-hidden="true">◎</span>
+        <h3>Workflow fit first</h3>
+        <p>We sort tools by where they live — IDE extension, AI-native editor or terminal agent — and who each one suits.</p>
+      </div>
+      <div class="feature" data-reveal>
+        <span class="feature-icon" aria-hidden="true">¥</span>
+        <h3>Pricing from official pages</h3>
+        <p>Every price cites the vendor page and the date we checked it. If we can’t verify something, we leave it out.</p>
+      </div>
+      <div class="feature" data-reveal>
+        <span class="feature-icon" aria-hidden="true">✕</span>
+        <h3>No invented benchmarks</h3>
+        <p>We don’t publish made-up win rates or scores. We tell you how to test a tool on your own backlog instead.</p>
+      </div>
+      <div class="feature" data-reveal>
+        <span class="feature-icon" aria-hidden="true">ⓘ</span>
+        <h3>Clear disclosures</h3>
+        <p>Affiliate links are labeled on every page that has them and never change a ranking. See our <a href={`${base}disclosure/`}>disclosure</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-bottom:3rem">
+    <a class="ja-banner" href={`${base}ja/`} hreflang="ja" lang="ja" data-reveal>
       <div>
         <span class="badge">日本語版</span>
         <h2>DevToolPick 日本語版</h2>
-        <p>Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本で使えるAIツール・SaaSのレビューと比較（2026年版）。</p>
+        <p>Notta・イルシル・Catchy・Value AI Writer・ConoHa AI Canvasなど、日本で使えるAIツール・SaaSのレビューと比較（2026年版）。</p>
       </div>
       <span class="btn btn-secondary">日本語版を見る →</span>
     </a>

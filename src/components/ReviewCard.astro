@@ -17,7 +17,8 @@ const { href, title, description, pubDate, updatedDate, tags = [], heroLabel, bo
 const shown = updatedDate ?? pubDate;
 const mins = readingMinutes(body, lang);
 ---
-<a class:list={['card', 'review-card', { featured }]} href={href}>
+<a class:list={['card', 'review-card', { featured }]} href={href} data-reveal>
+  <span class="card-glow" aria-hidden="true"></span>
   <div class="card-top">
     {heroLabel && <span class="badge">{heroLabel}</span>}
     <span class="card-time">{readingLabel(mins, lang)}</span>
