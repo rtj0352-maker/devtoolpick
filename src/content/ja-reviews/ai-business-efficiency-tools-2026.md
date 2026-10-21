@@ -5,6 +5,13 @@ pubDate: 2026-10-21
 updatedDate: 2026-10-21
 tags: ["生成AI", "業務効率化", "AIツール", "比較"]
 heroLabel: "まとめ"
+faq:
+  - q: "全部無料で試せますか？"
+    a: "Notta・イルシル・Catchy・Value AI Writerには無料プランがあります。ConoHa AI Canvasには無料プランはありませんが、各プランに無料のWebUI時間が含まれます（2026年10月21日時点）。"
+  - q: "最初にどれを契約すべきですか？"
+    a: "一番時間を取られている業務に対応するツールを1つだけ選び、無料枠で自分の素材を使って試してから判断するのがおすすめです。"
+  - q: "AIの出力はそのまま使えますか？"
+    a: "文字起こしの聞き間違いや文章の事実誤認はゼロにはなりません。最終チェックは人が行う前提で使ってください。"
 ---
 
 「生成AIで仕事を楽にしたいけど、どのツールを使えばいいかわからない」という方向けに、<strong>業務の種類ごとに</strong>使いやすいAIツールを整理しました。どれも無料プランやお試し枠があるので、まずは自分の仕事に一番近いものから試すのがおすすめです。
@@ -87,8 +94,5 @@ heroLabel: "まとめ"
 2. <strong>無料枠で「自分の仕事で使えるか」を確かめる</strong>：機能の多さより、自分の素材で試した結果で判断しましょう。
 3. <strong>AIの出力は必ず確認する</strong>：文字起こしの聞き間違いや、文章の事実誤認はゼロにはなりません。最終チェックは人が行う前提で使うのが安全です。
 
-## よくある質問
 
-<details class="faq"><summary>全部無料で試せますか？</summary><div><p>Notta・イルシル・Catchy・Value AI Writerには無料プランがあります。ConoHa AI Canvasには無料プランはありませんが、各プランに無料のWebUI時間が含まれます（2026年10月21日時点）。</p></div></details>
-<details class="faq"><summary>最初にどれを契約すべきですか？</summary><div><p>一番時間を取られている業務に対応するツールを1つだけ選び、無料枠で自分の素材を使って試してから判断するのがおすすめです。</p></div></details>
-<details class="faq"><summary>AIの出力はそのまま使えますか？</summary><div><p>文字起こしの聞き間違いや文章の事実誤認はゼロにはなりません。最終チェックは人が行う前提で使ってください。</p></div></details>
+関連記事：[Notta 料金プラン比較](/devtoolpick/ja/reviews/notta-pricing-plans-2026/)・[イルシルの使い方](/devtoolpick/ja/reviews/irusiru-how-to-use-2026/)・[AI文字起こしを無料で使うには？](/devtoolpick/ja/reviews/ai-transcription-free-2026/)

@@ -5,6 +5,15 @@ pubDate: 2026-10-15
 updatedDate: 2026-10-21
 tags: ["comparison", "Cursor", "Copilot", "Devin Desktop", "Claude Code"]
 heroLabel: "Head-to-head"
+faq:
+  - q: "Cursor vs Copilot: which is better?"
+    a: "They are different categories. Copilot is an extension that keeps your current IDE; Cursor replaces your editor with an AI-native one. If switching editors is a non-starter, choose Copilot."
+  - q: "Is Claude Code an IDE replacement?"
+    a: "Not by itself. It is a terminal / repo agent; many people pair it with Copilot or Cursor for day-to-day edits."
+  - q: "Which is best for a team rollout?"
+    a: "Prioritise admin controls, SSO, privacy settings and GitHub/JetBrains fit. For GitHub-standardised teams Copilot is usually the lowest-friction start."
+  - q: "How do I avoid surprise bills?"
+    a: "Spend one week on the cheapest paid tier with your real repo. If you hit limits before Friday, budget for the next tier."
 ---
 
 This is the decision page. Four products dominate “which AI coding tool?” searches in 2026 — but they are **not the same category**.
@@ -17,6 +26,8 @@ This is the decision page. Four products dominate “which AI coding tool?” se
 | Claude Code | Terminal / repo agent | Engineers who want CLI autonomy |
 
 > Checked against vendor docs/pricing pages around **October 15, 2026 (JST)**. Plans change — verify before purchase.
+
+> Re-checked on **October 21, 2026 (JST)**: list prices on the official pages were unchanged. Cursor now lists Teams at **$30+/user/month**.
 
 <div class="verdict">
 <strong>Quick verdict</strong>
@@ -97,15 +108,10 @@ A useful personal test: spend one week on the cheapest paid tier with **your rea
 
 There is no universal winner — only a winner for your form factor and bill tolerance.
 
-## FAQ
-
-<details class="faq"><summary>Cursor vs Copilot: which is better?</summary><div><p>They are different categories. Copilot is an extension that keeps your current IDE; Cursor replaces your editor with an AI-native one. If switching editors is a non-starter, choose Copilot.</p></div></details>
-<details class="faq"><summary>Is Claude Code an IDE replacement?</summary><div><p>Not by itself. It is a terminal / repo agent; many people pair it with Copilot or Cursor for day-to-day edits.</p></div></details>
-<details class="faq"><summary>Which is best for a team rollout?</summary><div><p>Prioritise admin controls, SSO, privacy settings and GitHub/JetBrains fit. For GitHub-standardised teams Copilot is usually the lowest-friction start.</p></div></details>
-<details class="faq"><summary>How do I avoid surprise bills?</summary><div><p>Spend one week on the cheapest paid tier with your real repo. If you hit limits before Friday, budget for the next tier.</p></div></details>
-
 ## Related guides
 
+- [Cursor vs GitHub Copilot (2026)](/devtoolpick/reviews/cursor-vs-github-copilot-2026/)
+- [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)
 - [Best AI coding assistants in 2026 (roundup)](/devtoolpick/reviews/best-ai-coding-assistants-2026/)
 - [Claude Code review](/devtoolpick/reviews/claude-code-review-2026/)
 - [GitHub Copilot pricing explained](/devtoolpick/reviews/github-copilot-pricing-explained-2026/)

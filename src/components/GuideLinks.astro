@@ -1,0 +1,12 @@
+---
+interface Props { lang?: 'en' | 'ja'; items: { id: string; label: string }[] }
+const { lang = 'en', items } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const path = lang === 'ja' ? `${base}ja/reviews/` : `${base}reviews/`;
+---
+<section class="guide-links" aria-label={lang === 'ja' ? '関連ガイド' : 'Related guides'}>
+  <p class="kicker">{lang === 'ja' ? '関連ガイド' : 'Related guides'}</p>
+  <ul>
+    {items.map((g) => <li><a href={`${path}${g.id}/`}>{g.label} <span aria-hidden="true">→</span></a></li>)}
+  </ul>
+</section>

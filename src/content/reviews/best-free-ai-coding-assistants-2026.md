@@ -5,6 +5,16 @@ pubDate: 2026-10-21
 updatedDate: 2026-10-21
 tags: ["AI coding", "free tools", "Copilot", "Antigravity", "Cursor", "budget"]
 heroLabel: "Free tier guide"
+verdict: "The most useful $0 setup combines GitHub Copilot Free for completions and chat, Google Antigravity for weekly agent quota, and CodeRabbit or Greptile Starter for PR review. Upgrade only when you hit limits during normal work."
+pros: ["Real, usable free tiers exist in 2026", "Free AI PR review for public repos or one developer", "No credit card needed to evaluate"]
+cons: ["Chat and agent allowances are small", "Individual-plan data may be used for training unless you opt out", "Some features (Bugbot, cloud agents) need paid tiers"]
+faq:
+  - q: "What does GitHub Copilot Free include?"
+    a: "2,000 completions and 50 chat requests per month, with CLI and agent mode supported (per GitHub's plans page)."
+  - q: "Is there a free AI code reviewer?"
+    a: "CodeRabbit is free for public repositories, and Greptile Starter covers one active developer with 50 credits a month."
+  - q: "Will my code be used for training on free plans?"
+    a: "GitHub says individual Free/Pro/Pro+ interaction data may be used for training unless you opt out in your Copilot settings."
 ---
 
 You can get real AI help writing code without paying anything in 2026. But every free tier has a different catch. This guide lists what each one actually includes, checked against the vendors' own pages, so you can stack them sensibly.

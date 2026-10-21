@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { tools, EN_CHECKED } from '../../data/tools';
+import GuideLinks from '../../components/GuideLinks.astro';
+import { tools, EN_CHECKED, enGuides } from '../../data/tools';
 const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="AI coding tool cost calculator (monthly vs yearly)" description="Estimate monthly and yearly cost for N seats of GitHub Copilot, Cursor, Devin Desktop and Claude Code, using list prices cited in our reviews.">
+<BaseLayout ogImage={`${base}og/tool-pricing.png`} jsonLd={{ "@context": "https://schema.org", "@type": "WebApplication", name: "AI coding tool cost calculator", applicationCategory: "BusinessApplication", operatingSystem: "Any (web browser)", isAccessibleForFree: true, inLanguage: "en", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }} title="AI coding tool cost calculator (monthly vs yearly)" description="Estimate monthly and yearly cost for N seats of GitHub Copilot, Cursor, Devin Desktop and Claude Code, using list prices cited in our reviews.">
   <section class="container tool-page" data-calc>
     <header class="tool-head">
       <p class="kicker">Tool · cost calculator</p>
@@ -39,6 +40,7 @@ const base = import.meta.env.BASE_URL;
     </div>
     <p class="calc-note mono" data-note aria-live="polite"></p>
     <p class="fine-print">Yearly = 12 × monthly unless the article cites an annual price (Claude Pro: $200/year, i.e. $17/mo). Copilot, Cursor and Devin team plans are priced separately — see <a href={`${base}tools/compare/`}>Compare</a> and each vendor’s page. Heavy agent use can add metered costs on every tool.</p>
+    <GuideLinks lang="en" items={enGuides} />
   </section>
   <script is:inline type="application/json" id="tool-data" set:html={JSON.stringify(tools)} />
 </BaseLayout>

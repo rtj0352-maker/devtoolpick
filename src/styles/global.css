@@ -833,3 +833,8 @@ input[type="range"] { accent-color: var(--ink); width: 160px; }
 .result-card .affiliate-slot a[rel~="sponsored"]::after { content: "↗"; }
 .result-card .affiliate-slot a[rel~="sponsored"]:hover { transform: translateY(-2px); }
 @media (max-width: 700px) { .result-card .affiliate-slot a[rel~="sponsored"] { width: 100%; justify-content: center; } }
+.guide-links { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 2px solid var(--text); }
+.guide-links ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+.guide-links a { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.8rem 1rem; background: var(--stone); color: var(--text); font-weight: 700; text-decoration: none; transition: background 0.15s ease, transform 0.15s ease; }
+.guide-links a:hover { background: var(--lime); color: var(--ink); transform: translateY(-2px); }
+.faq-block h2 { scroll-margin-top: 84px; }

@@ -9,6 +9,18 @@ export interface Tool {
   bestFor: string; watch: string; review: string; official: string;
 }
 export const EN_CHECKED = 'Oct 15, 2026 (JST)';
+export const enGuides = [
+  { id: 'cursor-vs-github-copilot-2026', label: 'Cursor vs GitHub Copilot (2026)' },
+  { id: 'claude-code-pricing-explained-2026', label: 'Claude Code pricing explained' },
+  { id: 'github-copilot-pricing-explained-2026', label: 'GitHub Copilot pricing explained' },
+  { id: 'best-free-ai-coding-assistants-2026', label: 'Best free AI coding assistants' },
+];
+export const jaGuides = [
+  { id: 'notta-pricing-plans-2026', label: 'Notta 料金プラン比較2026' },
+  { id: 'ai-transcription-free-2026', label: 'AI文字起こしを無料で使うには？' },
+  { id: 'irusiru-how-to-use-2026', label: 'イルシルの使い方：3ステップ' },
+  { id: 'ai-business-efficiency-tools-2026', label: '業務別おすすめAIツールまとめ' },
+];
 export const tools: Tool[] = [
   {
     id: 'copilot', name: 'GitHub Copilot', form: 'IDE extension', keepsIde: true, freeTier: true, checked: EN_CHECKED,
@@ -24,7 +36,7 @@ export const tools: Tool[] = [
     pricing: 'Weekly usage pool', team: 'Teams / Enterprise (see Cursor)',
     agent: true, prNative: 'Good via git', terminal: 'Inside the editor', models: 'Cursor models; 3rd-party on Premium+',
     bestFor: 'Developers who want an agent-first editor', watch: 'Third-party models need Premium+ and prepaid credit',
-    review: 'cursor-vs-copilot-vs-devin-desktop-vs-claude-code', official: 'https://cursor.com',
+    review: 'cursor-vs-github-copilot-2026', official: 'https://cursor.com',
   },
   {
     id: 'devin', name: 'Devin Desktop', form: 'AI-native editor', keepsIde: false, freeTier: true, checked: EN_CHECKED,

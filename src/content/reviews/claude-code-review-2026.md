@@ -2,9 +2,19 @@
 title: "Claude Code Review (2026): Is Anthropic’s Coding Agent Worth It?"
 description: "An in-depth 2026 review of Claude Code — what it is, who it’s for, Pro vs Max pricing, strengths, limits, and when to choose it over IDE assistants."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-21
 tags: ["Claude Code", "review", "Anthropic", "CLI agents"]
 heroLabel: "In-depth review"
+verdict: "Claude Code is one of the strongest agent experiences in 2026 for repository-scale work, and it's included with Claude Pro ($20/mo). It's less compelling as your only tool if you mainly want inline completions; pair it with an editor assistant."
+pros: ["Strong at multi-step, multi-file refactors", "Included with Claude Pro and Max; no separate subscription", "Works alongside any editor; no IDE lock-in"]
+cons: ["Not included on the Free plan", "Usage limits are shared with Claude chat apps", "No inline autocomplete like an IDE extension"]
+faq:
+  - q: "Is Claude Code free?"
+    a: "No. Claude Code is included with paid Claude plans (Pro, Max, Team, Enterprise) but not with Claude Free."
+  - q: "How much does Claude Code cost?"
+    a: "Through Claude Pro: $20/mo, or $17/mo effective billed annually ($200 up front). Max costs $100/mo (5x) or $200/mo (20x)."
+  - q: "Claude Code vs Cursor: which should I pick?"
+    a: "Claude Code if you prefer a terminal agent for deep repo work; Cursor if you want the editor itself built around agents. Many developers use one of each."
 ---
 
 Claude Code is Anthropic’s **terminal-native coding agent**. Instead of living primarily as autocomplete inside an IDE, it works in your repo: reading files, running commands, making multi-file changes, and iterating with you in a conversational loop.
@@ -12,6 +22,9 @@ Claude Code is Anthropic’s **terminal-native coding agent**. Instead of living
 This review explains what Claude Code is good at, what it costs in 2026, and whether it should replace — or merely complement — tools like GitHub Copilot and Cursor.
 
 > Pricing and inclusion details checked against Anthropic’s official pricing and Claude Code product pages around **October 15, 2026 (JST)**. Plans change; verify before buying.
+
+> Re-checked on **October 21, 2026 (JST)**: list prices on the official pages were unchanged.
+
 
 ## What Claude Code actually is
 
@@ -123,3 +136,8 @@ Claude Code is one of the best **agent** experiences available in 2026, especial
 For many strong engineers the winning setup is pragmatic: **keep an IDE assistant for flow, use Claude Code for hard problems.**
 
 **Rating (editorial, qualitative):** 4.6/5 for agentic coding workflows; 3.5/5 as a standalone autocomplete replacement.
+
+## More guides
+
+- [Cursor vs GitHub Copilot (2026)](/devtoolpick/reviews/cursor-vs-github-copilot-2026/)
+- [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)

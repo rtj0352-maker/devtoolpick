@@ -27,6 +27,7 @@ const categories = [
 ].map((c) => ({ ...c, items: c.ids.map(byId).filter((p) => p !== undefined) }));
 ---
 <BaseLayout
+  jsonLd={{ "@context": "https://schema.org", "@type": "WebSite", name: "DevToolPick", url: new URL(base, Astro.site).toString(), inLanguage: "en" }}
   title="DevToolPick"
   description="Independent reviews and comparisons of AI coding assistants and developer SaaS tools. Buyer-intent guides updated for 2026."
 >

@@ -39,6 +39,11 @@ const reviewSchema = (b: Bounds) =>
       tags: z.array(z.string().min(1)).min(1, 'add at least one tag').max(10),
       draft: z.boolean().default(false),
       heroLabel: z.string().min(1).max(30).optional(),
+      // Optional summary blocks rendered by ArticleLayout (and FAQ JSON-LD). Keep them factual.
+      verdict: z.string().min(20).max(500).optional(),
+      pros: z.array(z.string().min(2).max(160)).min(2).max(6).optional(),
+      cons: z.array(z.string().min(2).max(160)).min(2).max(6).optional(),
+      faq: z.array(z.strictObject({ q: z.string().min(5).max(160), a: z.string().min(10).max(600) })).min(2).max(8).optional(),
     })
     .refine((d) => !d.updatedDate || d.updatedDate.valueOf() >= d.pubDate.valueOf(), {
       message: 'updatedDate must be on or after pubDate',

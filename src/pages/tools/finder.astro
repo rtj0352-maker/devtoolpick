@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { tools, EN_CHECKED } from '../../data/tools';
+import GuideLinks from '../../components/GuideLinks.astro';
+import { tools, EN_CHECKED, enGuides } from '../../data/tools';
 const base = import.meta.env.BASE_URL;
 const qs = [
   { id: 'ide', q: 'Where do you want the AI to live?', opts: [['keep', 'In my current IDE', 'VS Code, JetBrains…'], ['open', 'I’ll switch to an AI-native editor', 'Agent-first editing'], ['terminal', 'In my terminal', 'Repo-native CLI agent']] },
@@ -9,7 +10,7 @@ const qs = [
   { id: 'job', q: 'What should it be best at?', opts: [['daily', 'Everyday completions & chat', 'Speed up normal coding'], ['agent', 'Multi-file agent edits', 'Describe it, review the diff'], ['refactor', 'Big refactors in a messy repo', 'Long, careful tasks'], ['review', 'Pull-request workflows', 'GitHub-native review']] },
 ];
 ---
-<BaseLayout title="Find your AI coding tool (quiz)" description="Answer 4 quick questions and get a recommended AI coding tool — Copilot, Cursor, Devin Desktop or Claude Code — with reasons and current entry prices.">
+<BaseLayout ogImage={`${base}og/tool-finder.png`} jsonLd={{ "@context": "https://schema.org", "@type": "WebApplication", name: "Find your AI coding tool", applicationCategory: "BusinessApplication", operatingSystem: "Any (web browser)", isAccessibleForFree: true, inLanguage: "en", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }} title="Find your AI coding tool (quiz)" description="Answer 4 quick questions and get a recommended AI coding tool — Copilot, Cursor, Devin Desktop or Claude Code — with reasons and current entry prices.">
   <section class="container tool-page">
     <header class="tool-head">
       <p class="kicker">Tool · 4 questions · ~30 seconds</p>
@@ -33,6 +34,7 @@ const qs = [
       <div class="quiz-result" data-result hidden tabindex="-1"></div>
     </div>
     <p class="fine-print">Prices: individual plans as cited in our articles, checked {EN_CHECKED}. Plans change often — verify on the vendor site.</p>
+    <GuideLinks lang="en" items={enGuides} />
   </section>
   <script is:inline type="application/json" id="tool-data" set:html={JSON.stringify(tools)} />
 </BaseLayout>

@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { tools, EN_CHECKED } from '../../data/tools';
+import GuideLinks from '../../components/GuideLinks.astro';
+import { tools, EN_CHECKED, enGuides } from '../../data/tools';
 const base = import.meta.env.BASE_URL;
 const entry = (t: (typeof tools)[number]) => Math.min(...t.tiers.filter((x) => x.monthly > 0).map((x) => x.monthly));
 ---
-<BaseLayout title="Compare AI coding tools: filter & side-by-side" description="Filter GitHub Copilot, Cursor, Devin Desktop and Claude Code by price, free tier, editor and features, sort the table, and compare 2–3 tools side by side.">
+<BaseLayout ogImage={`${base}og/tool-compare.png`} jsonLd={{ "@context": "https://schema.org", "@type": "WebApplication", name: "Compare AI coding tools", applicationCategory: "BusinessApplication", operatingSystem: "Any (web browser)", isAccessibleForFree: true, inLanguage: "en", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }} title="Compare AI coding tools: filter & side-by-side" description="Filter GitHub Copilot, Cursor, Devin Desktop and Claude Code by price, free tier, editor and features, sort the table, and compare 2–3 tools side by side.">
   <section class="container tool-page" data-compare data-base={base}>
     <header class="tool-head">
       <p class="kicker">Tool · filter · sort · compare</p>
@@ -68,6 +69,7 @@ const entry = (t: (typeof tools)[number]) => Math.min(...t.tiers.filter((x) => x
       <div class="side-grid" data-side></div>
     </section>
     <p class="fine-print">Individual-plan prices as cited in our articles (checked {EN_CHECKED}). Team plans differ — see each vendor. We don’t publish benchmark scores we haven’t run.</p>
+    <GuideLinks lang="en" items={enGuides} />
   </section>
   <script is:inline type="application/json" id="tool-data" set:html={JSON.stringify(tools)} />
 </BaseLayout>

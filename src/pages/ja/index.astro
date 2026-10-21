@@ -10,6 +10,7 @@ const base = import.meta.env.BASE_URL;
 const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ?? p.data.pubDate).valueOf())));
 ---
 <BaseLayout
+  jsonLd={{ "@context": "https://schema.org", "@type": "WebSite", name: "DevToolPick", url: new URL(base, Astro.site).toString(), inLanguage: "ja-JP" }}
   title="AIツール・SaaSのレビューと比較【2026年版】"
   description="AI文字起こし・AIスライド作成・AIデザインツールなど、日本で使えるAI/SaaSツールを料金・機能・メリット・デメリットで徹底比較。2026年最新の購入ガイド。"
   lang="ja"

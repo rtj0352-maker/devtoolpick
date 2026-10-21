@@ -5,6 +5,16 @@ pubDate: 2026-10-21
 updatedDate: 2026-10-21
 tags: ["AI code review", "roundup", "CodeRabbit", "Greptile", "Bugbot", "Copilot"]
 heroLabel: "Buyer's guide"
+verdict: "Already paying for Copilot? Turn on Copilot code review first. For a dedicated reviewer, CodeRabbit is the simplest per-developer buy, Greptile suits teams that want repo-wide context, and Bugbot makes sense if your team already runs Cursor Premium or above."
+pros: ["Catches routine issues before a human reviewer looks", "Several options have a free path (public repos, Starter, Copilot Free)", "Billing models are clear: per developer, seat + credits, or usage"]
+cons: ["Costs scale with team size or review volume", "AI reviewers produce some noise; humans still own the merge", "Bugbot needs a Cursor plan; it is not sold on its own"]
+faq:
+  - q: "What is the cheapest AI code review tool?"
+    a: "For public repositories CodeRabbit is free, and Greptile Starter covers one active developer with 50 credits a month. For private repos on a budget, Copilot Pro ($10/mo) includes code review paid from GitHub AI Credits."
+  - q: "Does AI code review replace human review?"
+    a: "No. Treat it as a first pass that flags routine problems; a person should still approve and merge."
+  - q: "How is Cursor Bugbot billed?"
+    a: "Bugbot runs on usage from a Cursor Premium-or-higher plan; the article cites roughly $1.00–$1.50 per review on average."
 ---
 
 AI coding agents now open pull requests faster than humans can read them. That moves the bottleneck to **review**. This guide compares four AI code review tools you can attach to GitHub today, focusing on what they cost and which team shape each one suits.

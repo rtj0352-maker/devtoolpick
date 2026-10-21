@@ -10,6 +10,8 @@ interface Props {
   canonicalPath?: string;
   ogType?: string;
   lang?: 'en' | 'ja';
+  ogImage?: string;
+  jsonLd?: object | object[];
 }
 
 const {
@@ -18,13 +20,16 @@ const {
   canonicalPath = Astro.url.pathname,
   ogType = 'website',
   lang = 'en',
+  ogImage: ogImagePath,
+  jsonLd,
 } = Astro.props;
 
 const siteName = 'DevToolPick';
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const canonical = new URL(canonicalPath, Astro.site).toString();
 const base = import.meta.env.BASE_URL;
-const ogImage = new URL(`${base}og-default.png`, Astro.site).toString();
+const ogImage = new URL(ogImagePath ?? `${base}og-default.png`, Astro.site).toString();
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!doctype html>
 <html lang={lang}>
@@ -59,6 +64,7 @@ const ogImage = new URL(`${base}og-default.png`, Astro.site).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" />
+    {ld.map((o) => <script is:inline type="application/ld+json" set:html={JSON.stringify(o).replace(/</g, '\\u003c')} />)}
     <ClientRouter />
     <script>import '../scripts/motion.ts';</script>
   </head>

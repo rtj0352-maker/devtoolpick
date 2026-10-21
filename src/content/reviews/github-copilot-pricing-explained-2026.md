@@ -2,9 +2,19 @@
 title: "GitHub Copilot Pricing Explained (2026): Is Pro Worth It?"
 description: "A clear breakdown of GitHub Copilot Free, Pro, Pro+, Max, and business tiers in 2026 — what AI Credits mean, and whether Pro is worth $10/month."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-21
 tags: ["GitHub Copilot", "pricing", "Copilot Pro"]
 heroLabel: "Pricing guide"
+verdict: "Copilot Pro ($10/mo) is one of the best $10 developer purchases if you want faster coding inside the IDE you already use. Move to Pro+ ($39) or Max ($100) only after you see AI Credit limits on real work."
+pros: ["Unlimited inline completions on paid plans", "Works in VS Code, JetBrains, Visual Studio, Neovim and more", "Free tier to try before paying"]
+cons: ["Chat, agents and code review consume metered AI Credits", "Individual plans lack org policy controls and IP indemnity", "Free-tier chat allowance is small"]
+faq:
+  - q: "How much is GitHub Copilot per month?"
+    a: "Free $0, Pro $10, Pro+ $39 and Max $100 per month for individuals (GitHub plans page, checked Oct 21, 2026 JST)."
+  - q: "What are GitHub AI Credits?"
+    a: "The unit Copilot uses for chat, agents, code review and CLI. 1 credit = $0.01; completions and next-edit suggestions don't use credits on paid plans."
+  - q: "Is Copilot Pro worth it?"
+    a: "For most individual developers who code daily in a supported IDE, yes. Upgrade further only if you regularly run out of credits."
 ---
 
 GitHub Copilot’s pricing looks simple on the marketing cards — Free, Pro, Pro+, Max — until you hit **GitHub AI Credits** and realize chat/agents are metered differently from completions.
@@ -12,6 +22,9 @@ GitHub Copilot’s pricing looks simple on the marketing cards — Free, Pro, Pr
 This article unpacks the 2026 individual plans and helps you decide if **Pro at $10/month** is enough.
 
 > Based on GitHub’s Copilot plans page as checked around **October 15, 2026 (JST)**. GitHub updates plans and credit allotments over time — confirm on the official page.
+
+> Re-checked on **October 21, 2026 (JST)**: list prices on the official pages were unchanged.
+
 
 ## Individual plans at a glance
 
@@ -96,5 +109,7 @@ Upgrade path: Free → Pro → (Pro+ / Max only after you see credit limits on r
 
 ## Related guides
 
+- [Cursor vs GitHub Copilot (2026)](/devtoolpick/reviews/cursor-vs-github-copilot-2026/)
+- [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)
 - [Best AI coding assistants 2026](/devtoolpick/reviews/best-ai-coding-assistants-2026/)  
 - [Best AI coding tools for solo developers on a budget](/devtoolpick/reviews/best-ai-coding-tools-for-solo-developers-budget/)

@@ -2,14 +2,27 @@
 title: "ConoHa AI Canvas レビュー2026：ブラウザ版Stable Diffusionは使えるか"
 description: "ConoHa AI Canvasの料金・機能を2026年最新情報でレビュー。ブラウザだけでStable Diffusion（AUTOMATIC1111 / ComfyUI）を使えるか、向いている人を解説します。"
 pubDate: 2026-10-16
-updatedDate: 2026-10-16
+updatedDate: 2026-10-21
 tags: ["ConoHa AI Canvas", "AI画像生成", "Stable Diffusion", "レビュー"]
 heroLabel: "徹底レビュー"
+verdict: "GPU付きPCを用意せずにStable Diffusion系の環境をブラウザで使いたい人向けです。まずはエントリー（月1,100円・無料10時間）で操作感とコスト感を確かめましょう。"
+pros: ["セットアップ不要でAUTOMATIC1111・ComfyUIを使える", "生成枚数に上限がない", "自動終了タイマーで切り忘れの課金を防げる"]
+cons: ["無料プランはない", "無料時間を超えると6.6円/分（税込）の従量課金", "商用利用の条件はモデルや規約しだい"]
+faq:
+  - q: "ConoHa AI Canvasに無料プランはありますか？"
+    a: "ありません。各プランに無料のWebUI時間（エントリー10時間・スタンダード50時間・アドバンス100時間）が含まれます（2026年10月21日時点）。"
+  - q: "料金はどう計算されますか？"
+    a: "月額の基本料金＋WebUIの利用時間です。無料時間を超えた分は6.6円/分（税込）かかります。"
+  - q: "プラン変更はいつ反映されますか？"
+    a: "公式によると、プラン変更は申し込みの翌月1日から適用されます。"
 ---
 
 高性能GPUを自分で用意せずに、Stable Diffusion系の画像生成を本格的に使いたい人向けの選択肢が増えています。**ConoHa AI Canvas**は、ブラウザだけでAUTOMATIC1111やComfyUIを起動できるGMOインターネットのクラウド型AI画像生成サービスです。本記事では、2026年時点の料金と仕様を整理し、誰に向いているかを解説します。
 
 > 料金・機能は2026年10月16日（日本時間）時点で[ConoHa AI Canvas公式](https://ai.conoha.jp/canvas/)および[料金ページ](https://ai.conoha.jp/canvas/pricing/)を確認した内容です。変更される場合があるため、申し込み前に必ず公式サイトでご確認ください。
+
+> 2026年10月21日（日本時間）に公式サイトを再確認し、料金に変更はありませんでした。
+
 
 ## ConoHa AI Canvasとは？
 

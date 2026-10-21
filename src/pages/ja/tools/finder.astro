@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
-import { jaTools } from '../../../data/tools';
+import GuideLinks from '../../../components/GuideLinks.astro';
+import { jaTools, jaGuides } from '../../../data/tools';
 const base = import.meta.env.BASE_URL;
 const yen = (n: number) => `${n.toLocaleString('ja-JP')}円`;
 const qs = [
@@ -10,7 +11,7 @@ const qs = [
   { id: 'pay', q: '支払い方法の希望は？', opts: [['month', '月払い', 'まず1か月だけ'], ['year', '年払いでもOK', '続けるなら安く']] },
 ];
 ---
-<BaseLayout title="AIツール診断：あなたに合う業務効率化AIは？" description="3つの質問に答えるだけで、Notta・イルシル・Catchy・Value AI Writer・ConoHa AI Canvasから合うツールとプランを提案。料金は各記事で確認した公式価格です。" lang="ja">
+<BaseLayout ogImage={`${base}og/ja-tool-finder.png`} jsonLd={{ "@context": "https://schema.org", "@type": "WebApplication", name: "AIツール診断", applicationCategory: "BusinessApplication", operatingSystem: "Any (web browser)", isAccessibleForFree: true, inLanguage: "ja-JP", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }} title="AIツール診断：あなたに合う業務効率化AIは？" description="3つの質問に答えるだけで、Notta・イルシル・Catchy・Value AI Writer・ConoHa AI Canvasから合うツールとプランを提案。料金は各記事で確認した公式価格です。" lang="ja">
   <section class="container tool-page">
     <header class="tool-head">
       <p class="kicker">ツール · 3つの質問 · 約20秒</p>
@@ -75,6 +76,7 @@ const qs = [
       </div>
       <p class="fine-print">※年契約のみのプランは月あたり換算。Catchyは料金表に税込・税別の明記がありません。そのほかは各記事の税込表記です。</p>
     </section>
+    <GuideLinks lang="ja" items={jaGuides} />
   </section>
   <script is:inline type="application/json" id="ja-tool-data" set:html={JSON.stringify(jaTools.map(({ id, plans }) => ({ id, plans })))} />
 </BaseLayout>
