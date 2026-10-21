@@ -31,24 +31,45 @@ const categories = [
   description="Independent reviews and comparisons of AI coding assistants and developer SaaS tools. Buyer-intent guides updated for 2026."
 >
   <section class="hero">
-    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><i class="grid-bg"></i></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Updated {formatDate(lastUpdated, 'en', 'long')}</p>
-        <h1>Pick the right AI coding tool <span class="grad">in one sitting.</span></h1>
-        <p class="lead">
-          Cursor, GitHub Copilot, Claude Code or Devin Desktop? We compare where each tool lives in your workflow,
-          what it really costs, and the trade-offs vendors don’t put on the landing page. Pricing is checked on official pages, with dates.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary btn-shine" href={r('best-ai-coding-assistants-2026')}>Start with the 2026 roundup <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn-secondary" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')}>Compare all four</a>
-        </div>
-        <ul class="hero-stats">
-          <li><strong>{posts.length}</strong> English guides</li>
-          <li><strong>{jaCount}</strong> 日本語レビュー</li>
-          <li>Prices cited <strong>with check dates</strong></li>
-        </ul>
+        <p class="eyebrow mono">● Updated {formatDate(lastUpdated, 'en', 'long')} · {posts.length} guides · {jaCount} 日本語</p>
+        <h1 class="display">Pick the right<br />AI coding tool.</h1>
+        <p class="lead">Cursor, Copilot, Claude Code or Devin Desktop? Workflow fit, real pricing with check dates, and the trade-offs vendors skip.</p>
+      </div>
+      <div class="bento">
+        <a class="tile tile-lime tile-a" href={r('best-ai-coding-assistants-2026')} data-reveal>
+          <span class="tile-top"><code class="mono">// 2026 roundup<br />4 tools · 1 decision</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Start here</strong>
+        </a>
+        <a class="tile tile-grey tile-b" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')} data-reveal>
+          <span class="tile-top"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Head-to-head</strong>
+        </a>
+        <a class="tile tile-ink tile-c" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')} data-reveal>
+          <span class="tile-top"><span class="pill-outline mono">● at a glance</span><span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <ul class="ink-list mono">
+            <li><span>Copilot</span><span>IDE extension</span></li>
+            <li><span>Cursor</span><span>Own editor</span></li>
+            <li><span>Devin</span><span>Own editor</span></li>
+            <li><span>Claude Code</span><span>Terminal</span></li>
+          </ul>
+          <strong class="tile-title">Compare all four</strong>
+        </a>
+        <a class="tile tile-grey tile-d" href={r('best-free-ai-coding-assistants-2026')} data-reveal>
+          <span class="tile-top"><code class="mono">$0 / month<br />what you really get</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Free tiers</strong>
+        </a>
+        <a class="tile tile-lime tile-e" href={r('claude-code-review-2026')} data-reveal>
+          <span class="tile-top"><code class="mono">$ claude<span class="caret" aria-hidden="true">▌</span></code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Claude Code</strong>
+        </a>
+        <a class="tile tile-ink tile-bar" href={`${base}reviews/`} data-reveal>
+          <span class="pill-lime mono">ALL</span>
+          <strong class="tile-title">Every review</strong>
+          <span class="bar-meta mono"><b>{posts.length}</b> guides · prices with check dates</span>
+          <span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span>
+        </a>
       </div>
     </div>
   </section>

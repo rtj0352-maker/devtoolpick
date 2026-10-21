@@ -37,8 +37,8 @@ const ogImage = new URL(`${base}og-default.png`, Astro.site).toString();
     <meta name="description" content={description} />
     <meta name="author" content="DevToolPick" />
     <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
@@ -56,6 +56,9 @@ const ogImage = new URL(`${base}og-default.png`, Astro.site).toString();
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" />
     <ClientRouter />
     <script>import '../scripts/motion.ts';</script>
   </head>
