@@ -17,20 +17,44 @@ const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ??
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">日本向けAIツール · 料金・機能を比較</p>
-        <h1>話題のAIツール、<span class="grad">結局どれを選べばいい？</span></h1>
-        <p class="lead">
-          Notta・イルシル・MiriCanvas・Value AI Writer・ConoHa AI Canvasなど、日本語で使えるAIツールを
-          「料金」「できること」「向いている人」で実用的にレビュー。無料でどこまでできるか、有料プランに払う価値はあるかを1記事で判断できます。
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href={`${base}ja/reviews/`}>レビュー一覧を見る →</a>
-          <a class="btn btn-secondary" href={`${base}ja/reviews/notta-review-2026/`}>Notta レビューから読む</a>
-        </div>
-        <ul class="hero-stats">
-          <li><strong>{posts.length}</strong> 本のレビュー・比較</li>
-          <li>最終更新 <strong>{formatDate(lastUpdated, 'ja', 'long')}</strong></li>
-        </ul>
+        <p class="eyebrow mono">● 最終更新 {formatDate(lastUpdated, 'ja', 'long')} · {posts.length}本のレビュー</p>
+        <h1 class="display">仕事に効くAIを、<br />30秒で選ぶ。</h1>
+        <p class="lead">3つの質問に答えるだけのAIツール診断と、公式サイトで確認した料金の早見表。気になったらレビューで詳しくチェック。</p>
+      </div>
+      <div class="bento">
+        <a class="tile tile-lime tile-a" href={`${base}ja/tools/finder/`} data-reveal>
+          <span class="tile-top"><code class="mono">3つの質問<br />→ ぴったりの1本</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">AIツール診断</strong>
+        </a>
+        <a class="tile tile-grey tile-b" href={`${base}ja/reviews/ai-business-efficiency-tools-2026/`} data-reveal>
+          <span class="tile-top"><code class="mono">業務別<br />おすすめ早見表</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">業務効率化まとめ</strong>
+        </a>
+        <a class="tile tile-ink tile-c" href={`${base}ja/tools/finder/`} data-reveal>
+          <span class="tile-top"><span class="pill-outline mono">● 料金早見表</span><span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <ul class="ink-list mono">
+            <li><span>Notta</span><span>議事録</span></li>
+            <li><span>イルシル</span><span>スライド</span></li>
+            <li><span>Catchy</span><span>コピー</span></li>
+            <li><span>Value AI Writer</span><span>SEO記事</span></li>
+            <li><span>ConoHa AI Canvas</span><span>画像生成</span></li>
+          </ul>
+          <strong class="tile-title">5ツールを比較</strong>
+        </a>
+        <a class="tile tile-grey tile-d" href={`${base}ja/reviews/notta-review-2026/`} data-reveal>
+          <span class="tile-top"><span class="rec mono"><i aria-hidden="true"></i>REC 00:00</span><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Notta レビュー</strong>
+        </a>
+        <a class="tile tile-lime tile-e" href={`${base}ja/reviews/ai-slide-tools-comparison-2026-irusiru/`} data-reveal>
+          <span class="tile-top"><code class="mono">提案書.pptx<span class="caret" aria-hidden="true">▌</span></code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">AIスライド比較</strong>
+        </a>
+        <a class="tile tile-ink tile-bar" href={`${base}ja/reviews/`} data-reveal>
+          <span class="pill-lime mono">ALL</span>
+          <strong class="tile-title">すべてのレビュー</strong>
+          <span class="bar-meta mono"><b>{posts.length}</b> 本 · 料金は確認日つき</span>
+          <span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span>
+        </a>
       </div>
     </div>
   </section>

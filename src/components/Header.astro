@@ -10,11 +10,15 @@ const links =
   lang === 'ja'
     ? [
         { href: `${base}ja/`, label: 'ホーム', exact: true },
+        { href: `${base}ja/tools/finder/`, label: 'AI診断' },
         { href: `${base}ja/reviews/`, label: 'レビュー' },
         { href: `${base}ja/disclosure/`, label: '広告について', minor: true },
       ]
     : [
         { href: base, label: 'Home', exact: true },
+        { href: `${base}tools/finder/`, label: 'Finder' },
+        { href: `${base}tools/compare/`, label: 'Compare' },
+        { href: `${base}tools/pricing/`, label: 'Pricing' },
         { href: `${base}reviews/`, label: 'Reviews' },
         { href: `${base}about/`, label: 'About', minor: true },
         { href: `${base}disclosure/`, label: 'Disclosure', minor: true },
@@ -27,7 +31,10 @@ const isActive = (l: { href: string; exact?: boolean; minor?: boolean }) => (l.e
       <Logo size={30} />
       <span>DevToolPick{lang === 'ja' && <small class="brand-sub">日本語版</small>}</span>
     </a>
-    <nav class="nav-links" aria-label={lang === 'ja' ? 'メインメニュー' : 'Primary'}>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="primary-nav" data-menu>
+      <span class="sr-only">{lang === 'ja' ? 'メニュー' : 'Menu'}</span><i aria-hidden="true"></i>
+    </button>
+    <nav id="primary-nav" class="nav-links" aria-label={lang === 'ja' ? 'メインメニュー' : 'Primary'}>
       {links.map((l) => (
         <a href={l.href} class:list={[{ 'nav-minor': l.minor }]} aria-current={isActive(l) ? 'page' : undefined}>{l.label}</a>
       ))}

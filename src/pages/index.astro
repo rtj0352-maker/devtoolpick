@@ -35,34 +35,34 @@ const categories = [
       <div class="hero-copy">
         <p class="eyebrow mono">● Updated {formatDate(lastUpdated, 'en', 'long')} · {posts.length} guides · {jaCount} 日本語</p>
         <h1 class="display">Pick the right<br />AI coding tool.</h1>
-        <p class="lead">Cursor, Copilot, Claude Code or Devin Desktop? Workflow fit, real pricing with check dates, and the trade-offs vendors skip.</p>
+        <p class="lead">Take the 30-second quiz, filter the field, or price it for your team — then read the review. Real prices with check dates, no invented benchmarks.</p>
       </div>
       <div class="bento">
-        <a class="tile tile-lime tile-a" href={r('best-ai-coding-assistants-2026')} data-reveal>
-          <span class="tile-top"><code class="mono">// 2026 roundup<br />4 tools · 1 decision</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
-          <strong class="tile-title">Start here</strong>
+        <a class="tile tile-lime tile-a" href={`${base}tools/finder/`} data-reveal>
+          <span class="tile-top"><code class="mono">4 questions<br />→ 1 recommendation</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">Tool finder</strong>
         </a>
-        <a class="tile tile-grey tile-b" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')} data-reveal>
+        <a class="tile tile-grey tile-b" href={`${base}tools/pricing/`} data-reveal>
           <span class="tile-top"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
-          <strong class="tile-title">Head-to-head</strong>
+          <strong class="tile-title">Cost calculator</strong>
         </a>
-        <a class="tile tile-ink tile-c" href={r('cursor-vs-copilot-vs-devin-desktop-vs-claude-code')} data-reveal>
-          <span class="tile-top"><span class="pill-outline mono">● at a glance</span><span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+        <a class="tile tile-ink tile-c" href={`${base}tools/compare/`} data-reveal>
+          <span class="tile-top"><span class="pill-outline mono">● filter · sort</span><span class="arrow-dot solid" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
           <ul class="ink-list mono">
             <li><span>Copilot</span><span>IDE extension</span></li>
             <li><span>Cursor</span><span>Own editor</span></li>
             <li><span>Devin</span><span>Own editor</span></li>
             <li><span>Claude Code</span><span>Terminal</span></li>
           </ul>
-          <strong class="tile-title">Compare all four</strong>
+          <strong class="tile-title">Compare tools</strong>
         </a>
-        <a class="tile tile-grey tile-d" href={r('best-free-ai-coding-assistants-2026')} data-reveal>
-          <span class="tile-top"><code class="mono">$0 / month<br />what you really get</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+        <a class="tile tile-grey tile-d" href={r('best-ai-coding-assistants-2026')} data-reveal>
+          <span class="tile-top"><code class="mono">// 2026 roundup<br />4 tools · 1 decision</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
+          <strong class="tile-title">The roundup</strong>
+        </a>
+        <a class="tile tile-lime tile-e" href={r('best-free-ai-coding-assistants-2026')} data-reveal>
+          <span class="tile-top"><code class="mono">$0 / month<span class="caret" aria-hidden="true">▌</span><br />what you really get</code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
           <strong class="tile-title">Free tiers</strong>
-        </a>
-        <a class="tile tile-lime tile-e" href={r('claude-code-review-2026')} data-reveal>
-          <span class="tile-top"><code class="mono">$ claude<span class="caret" aria-hidden="true">▌</span></code><span class="arrow-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg></span></span>
-          <strong class="tile-title">Claude Code</strong>
         </a>
         <a class="tile tile-ink tile-bar" href={`${base}reviews/`} data-reveal>
           <span class="pill-lime mono">ALL</span>

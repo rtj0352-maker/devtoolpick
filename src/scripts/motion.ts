@@ -71,9 +71,21 @@ function tocSpy() {
   cleanups.push(() => io.disconnect());
 }
 
+function menu() {
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu]');
+  const nav = document.getElementById('primary-nav');
+  if (!btn || !nav) return;
+  const set = (open: boolean) => { btn.setAttribute('aria-expanded', String(open)); document.documentElement.classList.toggle('menu-open', open); };
+  const click = () => set(btn.getAttribute('aria-expanded') !== 'true');
+  const key = (e: KeyboardEvent) => { if (e.key === 'Escape') { set(false); btn.focus(); } };
+  btn.addEventListener('click', click); document.addEventListener('keydown', key);
+  set(false);
+  cleanups.push(() => { btn.removeEventListener('click', click); document.removeEventListener('keydown', key); });
+}
+
 function init() {
   cleanups.forEach((c) => c()); cleanups = [];
   document.documentElement.classList.add('js');
-  reveal(); tilt(); progress(); tocSpy();
+  reveal(); tilt(); menu(); progress(); tocSpy();
 }
 document.addEventListener('astro:page-load', init);

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AffiliateDisclosure from '../../../components/AffiliateDisclosure.astro';
+import { jaTools } from '../../../data/tools';
+const base = import.meta.env.BASE_URL;
+const yen = (n: number) => `${n.toLocaleString('ja-JP')}円`;
+const qs = [
+  { id: 'task', q: 'いちばん時間を取られている仕事は？', opts: jaTools.map((t) => [t.id, t.task, t.name]) },
+  { id: 'budget', q: '月の予算は？', opts: [['0', 'まずは無料で', '無料プラン・無料枠'], ['1500', '月1,500円くらいまで', '個人で気軽に'], ['5000', '月5,000円くらいまで', '本格的に使う'], ['99999', '予算は気にしない', '上位プランも検討']] },
+  { id: 'pay', q: '支払い方法の希望は？', opts: [['month', '月払い', 'まず1か月だけ'], ['year', '年払いでもOK', '続けるなら安く']] },
+];
+---
+<BaseLayout title="AIツール診断：あなたに合う業務効率化AIは？" description="3つの質問に答えるだけで、Notta・イルシル・Catchy・Value AI Writer・ConoHa AI Canvasから合うツールとプランを提案。料金は各記事で確認した公式価格です。" lang="ja">
+  <section class="container tool-page">
+    <header class="tool-head">
+      <p class="kicker">ツール · 3つの質問 · 約20秒</p>
+      <h1 class="display-sm">AIツール診断</h1>
+      <p class="lead">登録不要・送信なし。ブラウザの中だけで動きます。料金は各レビュー記事で公式サイトを確認した時点の価格です。</p>
+    </header>
+    <div class="disclosure-wrap"><AffiliateDisclosure lang="ja" /></div>
+    <div class="quiz" data-jaquiz>
+      <div class="quiz-progress" aria-hidden="true"><i data-bar></i></div>
+      <p class="quiz-step mono" data-step aria-live="polite">質問 1 / {qs.length}</p>
+      {qs.map((q, i) => (
+        <fieldset class="quiz-q" data-q={q.id} hidden={i !== 0}>
+          <legend>{q.q}</legend>
+          <div class="opts">
+            {q.opts.map(([v, label, sub]) => (
+              <button type="button" class="opt" data-value={v}><strong>{label}</strong><span>{sub}</span><i class="opt-key mono" aria-hidden="true">→</i></button>
+            ))}
+          </div>
+          {i > 0 && <button type="button" class="link-btn mono" data-back>← 戻る</button>}
+        </fieldset>
+      ))}
+      <div class="quiz-result" data-result hidden tabindex="-1">
+        {jaTools.map((t) => (
+          <div class="result-card" data-tool={t.id} data-free={t.free.startsWith('無料プランなし') ? 0 : 1} hidden>
+            <p class="kicker">おすすめ</p>
+            <h2 class="result-name">{t.name}</h2>
+            <p class="result-sub mono" data-plan></p>
+            <p class="result-warn" data-warn hidden></p>
+            <ul class="result-why">
+              <li>{t.task}に特化：{t.good}</li>
+              <li>無料で使える範囲：{t.free}</li>
+            </ul>
+            <p class="result-watch"><b>注意点：</b>{t.watch}</p>
+            <div class="affiliate-slot" data-affiliate={t.name}>
+              <p><a href={t.a8.href} rel="nofollow sponsored noopener" target="_blank">{t.a8.label}</a></p>
+              <Fragment set:html={`<img border="0" width="1" height="1" src="${t.a8.pixel}" alt="">`} />
+            </div>
+            <p class="result-links mono"><a href={`${base}ja/reviews/${t.review}/`}>{t.name}のレビューを読む →</a></p>
+            <p class="fine-print">料金は{t.checked}（日本時間）時点の公式サイトの情報です。</p>
+          </div>
+        ))}
+        <button type="button" class="link-btn mono" data-restart>↺ もう一度診断する</button>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-head"><div><p class="kicker">早見表</p><h2 class="section-title">5ツールの料金比較</h2></div><a class="section-link" href={`${base}ja/reviews/ai-business-efficiency-tools-2026/`}>詳しいまとめ →</a></div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th scope="col">ツール</th><th scope="col">向いている業務</th><th scope="col">無料で使える範囲</th><th scope="col">有料プラン（月額）</th><th scope="col">確認日</th></tr></thead>
+          <tbody>
+            {jaTools.map((t) => (
+              <tr>
+                <th scope="row"><a href={`${base}ja/reviews/${t.review}/`}>{t.name}</a></th>
+                <td>{t.task}</td><td>{t.free}</td>
+                <td class="num">{t.plans.map((p) => `${p.name} ${yen(p.monthly)}${p.note ? '※' : ''}`).join(' / ')}</td>
+                <td>{t.checked}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fine-print">※年契約のみのプランは月あたり換算。Catchyは料金表に税込・税別の明記がありません。そのほかは各記事の税込表記です。</p>
+    </section>
+  </section>
+  <script is:inline type="application/json" id="ja-tool-data" set:html={JSON.stringify(jaTools.map(({ id, plans }) => ({ id, plans })))} />
+</BaseLayout>
+<script>
+import { initJaQuiz } from '../../../scripts/jaquiz';
+document.addEventListener('astro:page-load', initJaQuiz);
+</script>

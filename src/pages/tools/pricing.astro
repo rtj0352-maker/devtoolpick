@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tools, EN_CHECKED } from '../../data/tools';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="AI coding tool cost calculator (monthly vs yearly)" description="Estimate monthly and yearly cost for N seats of GitHub Copilot, Cursor, Devin Desktop and Claude Code, using list prices cited in our reviews.">
+  <section class="container tool-page" data-calc>
+    <header class="tool-head">
+      <p class="kicker">Tool · cost calculator</p>
+      <h1 class="display-sm">What will it cost?</h1>
+      <p class="lead">Pick a plan for each tool and the number of seats. We use individual list prices cited in our articles (checked {EN_CHECKED}) — no usage overage, taxes or team discounts.</p>
+    </header>
+    <div class="calc-controls">
+      <label class="seats"><span class="mono">Seats</span>
+        <span class="stepper">
+          <button type="button" data-step="-1" aria-label="Fewer seats">−</button>
+          <input type="number" name="seats" min="1" max="500" value="1" inputmode="numeric" />
+          <button type="button" data-step="1" aria-label="More seats">+</button>
+        </span>
+      </label>
+      <div class="seg" role="radiogroup" aria-label="Billing period">
+        <label><input type="radio" name="period" value="month" checked /><span>Monthly</span></label>
+        <label><input type="radio" name="period" value="year" /><span>Per year</span></label>
+      </div>
+    </div>
+    <div class="calc-rows">
+      {tools.map((t) => (
+        <div class="calc-row" data-tool={t.id}>
+          <div class="calc-name"><strong>{t.name}</strong><span class="mono">{t.form}</span></div>
+          <label class="select-wrap"><span class="sr-only">{t.name} plan</span>
+            <select data-tier>
+              {t.tiers.map((x, i) => <option value={i} selected={x.monthly > 0 && t.tiers.findIndex((y) => y.monthly > 0) === i}>{x.name} — {x.monthly ? `$${x.monthly}/mo` : 'Free'}</option>)}
+            </select>
+          </label>
+          <div class="calc-bar" aria-hidden="true"><i data-bar></i></div>
+          <output class="calc-out mono" data-out>—</output>
+        </div>
+      ))}
+    </div>
+    <p class="calc-note mono" data-note aria-live="polite"></p>
+    <p class="fine-print">Yearly = 12 × monthly unless the article cites an annual price (Claude Pro: $200/year, i.e. $17/mo). Copilot, Cursor and Devin team plans are priced separately — see <a href={`${base}tools/compare/`}>Compare</a> and each vendor’s page. Heavy agent use can add metered costs on every tool.</p>
+  </section>
+  <script is:inline type="application/json" id="tool-data" set:html={JSON.stringify(tools)} />
+</BaseLayout>
+<script>
+import { initCalc } from '../../scripts/calc';
+document.addEventListener('astro:page-load', initCalc);
+</script>

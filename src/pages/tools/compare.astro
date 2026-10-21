@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tools, EN_CHECKED } from '../../data/tools';
+const base = import.meta.env.BASE_URL;
+const entry = (t: (typeof tools)[number]) => Math.min(...t.tiers.filter((x) => x.monthly > 0).map((x) => x.monthly));
+---
+<BaseLayout title="Compare AI coding tools: filter & side-by-side" description="Filter GitHub Copilot, Cursor, Devin Desktop and Claude Code by price, free tier, editor and features, sort the table, and compare 2–3 tools side by side.">
+  <section class="container tool-page" data-compare data-base={base}>
+    <header class="tool-head">
+      <p class="kicker">Tool · filter · sort · compare</p>
+      <h1 class="display-sm">Compare AI coding tools</h1>
+      <p class="lead">Filter by what matters to you, then tick 2–3 tools to see them side by side. Facts come from our reviews; prices checked {EN_CHECKED}.</p>
+    </header>
+
+    <form class="filters" data-filters onsubmit="return false">
+      <label class="chip"><input type="checkbox" name="free" /> <span>Has a free tier</span></label>
+      <label class="chip"><input type="checkbox" name="keep" /> <span>Keeps my editor</span></label>
+      <label class="chip"><input type="checkbox" name="cli" /> <span>Works in the terminal</span></label>
+      <label class="select-wrap"><span class="mono">Form</span>
+        <select name="form"><option value="">Any</option><option>IDE extension</option><option>AI-native editor</option><option>Terminal agent</option></select>
+      </label>
+      <label class="range-wrap"><span class="mono">Entry paid tier ≤ <output name="maxOut">$30</output></span>
+        <input type="range" name="max" min="8" max="30" step="1" value="30" />
+      </label>
+      <button type="reset" class="link-btn mono">Reset</button>
+    </form>
+
+    <p class="mono count" data-count aria-live="polite"></p>
+    <div class="table-scroll data-table-wrap">
+      <table class="data-table" data-table>
+        <thead>
+          <tr>
+            <th scope="col" class="pick-col"><span class="sr-only">Compare</span></th>
+            <th scope="col"><button type="button" data-sort="name">Tool <i aria-hidden="true"></i></button></th>
+            <th scope="col"><button type="button" data-sort="form">Form <i aria-hidden="true"></i></button></th>
+            <th scope="col"><button type="button" data-sort="entry">Entry paid <i aria-hidden="true"></i></button></th>
+            <th scope="col"><button type="button" data-sort="free">Free tier <i aria-hidden="true"></i></button></th>
+            <th scope="col">Pricing shape</th>
+            <th scope="col">PR workflows</th>
+            <th scope="col">Terminal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tools.map((t) => (
+            <tr data-id={t.id} data-name={t.name} data-form={t.form} data-entry={entry(t)} data-free={t.freeTier ? 1 : 0} data-keep={t.keepsIde ? 1 : 0} data-cli={t.terminal === 'Inside the editor' ? 0 : 1}>
+              <td class="pick-col"><label class="tick"><input type="checkbox" data-pick value={t.id} aria-label={`Compare ${t.name}`} /><span aria-hidden="true"></span></label></td>
+              <th scope="row"><a href={`${base}reviews/${t.review}/`}>{t.name}</a></th>
+              <td>{t.form}</td>
+              <td class="num">${entry(t)}/mo</td>
+              <td>{t.freeTier ? <span class="pill-yes">Yes</span> : <span class="pill-no">No</span>}</td>
+              <td>{t.pricing}</td>
+              <td>{t.prNative}</td>
+              <td>{t.terminal}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div class="empty-state" data-empty hidden>
+        <strong>No tool matches every filter.</strong>
+        <p>Try raising the price limit or unticking a filter — Claude Code, for example, has no free tier.</p>
+        <button type="button" class="btn btn-secondary" data-clear>Clear filters</button>
+      </div>
+    </div>
+
+    <section class="side" aria-labelledby="side-title">
+      <div class="section-head"><div><p class="kicker">Side by side</p><h2 class="section-title" id="side-title">Your shortlist</h2></div></div>
+      <p class="side-hint mono" data-hint>Tick 2–3 tools in the table to compare.</p>
+      <div class="side-grid" data-side></div>
+    </section>
+    <p class="fine-print">Individual-plan prices as cited in our articles (checked {EN_CHECKED}). Team plans differ — see each vendor. We don’t publish benchmark scores we haven’t run.</p>
+  </section>
+  <script is:inline type="application/json" id="tool-data" set:html={JSON.stringify(tools)} />
+</BaseLayout>
+<script>
+import { initCompare } from '../../scripts/compare';
+document.addEventListener('astro:page-load', initCompare);
+</script>
