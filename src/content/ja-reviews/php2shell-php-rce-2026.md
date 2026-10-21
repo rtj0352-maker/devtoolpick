@@ -4,7 +4,7 @@ description: "2026年10月21日（JST）に修正されたPHPの認証不要RCE�
 pubDate: 2026-10-22
 tags: ["PHP", "セキュリティ", "ニュース", "脆弱性"]
 heroLabel: "セキュリティニュース"
-verdict: "脆弱性は実在し、深刻度はCritical（CVSS v4.0 9.2）です。2026年10月21日22時30分頃（JST）に修正版が公開されました。PHP 8.5.12／8.4.27／8.3.36／8.2.35へ更新し、PHPのワーカーをすべて再起動してください。なお「流出」「59%」といった主張は、一次情報では確認できません。"
+verdict: "脆弱性は実在し、深刻度はCritical（CVSS v4.0 9.2）です。2026年10月21日22時30分頃（JST）に修正版が公開されました。PHP 8.5.12／8.4.27／8.3.36／8.2.35へ更新し、PHPのワーカーをすべて再起動してください。Cloudflareは公開前に情報が漏れ、攻撃通信を観測したと報告しています。一方、「59%」という数字の出典は確認できませんでした。"
 faq:
   - q: "どのバージョンで修正されましたか？"
     a: "PHP 8.5.12、8.4.27、8.3.36、8.2.35です。各ブランチでこれより前のバージョンはすべて影響を受けます。"
@@ -16,7 +16,16 @@ faq:
 
 2026年10月21日、PHPは認証不要でリモートコード実行（RCE）が可能になる重大な脆弱性2件を修正する緊急リリースを公開しました。リリース前にXで拡散された投稿（42万回以上表示）について、一次情報と照らし合わせて真偽を確認します。時刻はすべて**日本時間（JST）**です。
 
-> 2026年10月22日（JST）に確認した情報源：[php.net](https://www.php.net/archive/2026.php)、[GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w)、[GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)、[NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109618)、[CERT-EU](https://cert.europa.eu/publications/security-advisories/2026-018/)、[W3Techs](https://w3techs.com/technologies/details/pl-php)。攻撃手法の詳細は掲載しません。
+> 2026年10月22日2時10分（JST）までに確認した情報源：[Wiz](https://www.wiz.io/blog/php2shell-php-rce)、[Cloudflare](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)、[IPA](https://www.ipa.go.jp/security/security-alert/2026/pre-alert20261021.html)、[php.net](https://www.php.net/archive/2026.php)、[GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w)、[GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)、[NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109618)、[CERT-EU](https://cert.europa.eu/publications/security-advisories/2026-018/)、[W3Techs](https://w3techs.com/technologies/details/pl-php)。攻撃手法の詳細は掲載しません。
+
+## 時系列（JST）
+
+- **10月21日 5時32分頃**：php.netがセキュリティリリースを予告（23時予定、CVSS 9.2）。IPAも事前準備を呼びかける
+- **10月21日 12時02分**：CloudflareがWAFによる防御を全プランで既定で有効化
+- **10月21日 17時07分**：「流出」を主張するX投稿が拡散
+- **10月21日 22時30分頃**：修正版を公開。同時にWizが研究内容を公表し、Hacker Newsでトップ記事になる
+- **10月21日 23時17分**：NVDがCVE-2026-109618を公開
+- **10月22日時点**：PHP公式による悪用の確認なし。CISA KEVへの登録もなし（SecurityOnline）
 
 ## 2件の脆弱性
 
@@ -34,8 +43,8 @@ Webリクエストを処理するすべての構成（PHP-FPM、Apache mod_php�
 | 認証不要のRCEが2件 | **事実** | 公式アドバイザリの記載どおり |
 | 「1リクエストでシェル」 | **一部事実** | mod_phpで1回の未認証リクエストによる攻撃が実証済みと公式が記載。ただし攻撃の複雑さは「高（AC:H）」と評価されている |
 | 「今夜22時にパッチ」 | **おおむね正しい** | 予定は23時、実際の公開は22時30分頃（CERT-EU） |
-| 脆弱性が「流出」した | **根拠なし** | Googleの記事によるとWiz Researchによる協調的開示。公開後、CERT-EUはPoCが出回り始めたと報告している |
-| 「PHP2Shell」ツールの流出 | **誤解を招く** | PHP2Shellは脆弱性2件の通称。流出ツールを示す一次情報は見つからなかった |
+| 脆弱性が「流出」した | **Cloudflareが報告** | 発見と開示はWiz Researchによる協調的開示。ただしCloudflareは、正式公開前に情報が漏れ、顧客への攻撃通信を観測したと報告している。CERT-EUもPoCが出回り始めたと報告 |
+| 「PHP2Shell」ツールの流出 | **未確認** | php2shellはWizが作成した実証用エクスプロイトの名称。それが流出したことを示す一次情報は見つからなかった |
 | 8.1未満にパッチなし | **ほぼ事実** | 8.1以前の公式リリースはない（EOL）。7.4／8.0／8.1向けの最小限のソースバックポートは公開されている |
 | 公開ホストの59%が旧版 | **未確認** | 出典は見つからなかった。W3Techsのデータでは、サポート切れ（8.1以前）のサイトは約48〜49% |
 
