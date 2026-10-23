@@ -113,3 +113,7 @@ Upgrade path: Free → Pro → (Pro+ / Max only after you see credit limits on r
 - [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)
 - [Best AI coding assistants 2026](/devtoolpick/reviews/best-ai-coding-assistants-2026/)  
 - [Best AI coding tools for solo developers on a budget](/devtoolpick/reviews/best-ai-coding-tools-for-solo-developers-budget/)
+
+---
+
+*Part of [The Complete Guide to AI Coding Tools in 2026](/devtoolpick/reviews/complete-guide-ai-coding-tools-2026/): every DevToolPick guide in one place.*

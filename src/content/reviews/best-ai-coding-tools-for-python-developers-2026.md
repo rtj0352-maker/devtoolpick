@@ -76,3 +76,7 @@ A good option if you want agent loops inside an editor and prefer Cognition’s 
 
 - [Best AI coding assistants 2026](/devtoolpick/reviews/best-ai-coding-assistants-2026/)
 - [Claude Code review](/devtoolpick/reviews/claude-code-review-2026/)
+
+---
+
+*Part of [The Complete Guide to AI Coding Tools in 2026](/devtoolpick/reviews/complete-guide-ai-coding-tools-2026/): every DevToolPick guide in one place.*

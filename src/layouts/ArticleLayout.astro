@@ -87,6 +87,10 @@ const mins = readingMinutes(body, lang);
         )}
         <span aria-hidden="true">·</span>
         <span>{readingLabel(mins, lang)}</span>
+        <span class="share-row">
+          <button type="button" class="share-btn" data-share="copy" aria-label={isJa ? 'リンクをコピー' : 'Copy link'}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>{isJa ? 'コピー' : 'Copy link'}</button>
+          <button type="button" class="share-btn" data-share="native"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13"/><path d="m7 8 5-5 5 5"/></svg>{isJa ? '共有' : 'Share'}</button>
+        </span>
       </div>
     </header>
     <div class="disclosure-wrap"><AffiliateDisclosure lang={lang} /></div>
@@ -100,11 +104,23 @@ const mins = readingMinutes(body, lang);
               {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
             </ol>
           </details>
+          <div class="glance">
+            {verdict && (<p class="glance-verdict"><strong>{isJa ? '結論' : 'Verdict'}</strong>{verdict.length > 150 ? `${verdict.slice(0, 147).replace(/\s+\S*$/, '')}…` : verdict}</p>)}
+            <dl>
+              <dt>{isJa ? '最終確認' : 'Last checked'}</dt><dd><time datetime={(updatedDate ?? pubDate).toISOString()}>{formatDate(updatedDate ?? pubDate, lang, 'long')}</time></dd>
+              {pros && <><dt>{isJa ? '良い点／注意点' : 'Pros / cons'}</dt><dd>{pros.length} / {cons?.length ?? 0}</dd></>}
+            </dl>
+            <div class="glance-actions">
+              {verdict && <a href="#verdict">{isJa ? '結論へ' : 'Verdict'}</a>}
+              {faq?.length ? <a href="#faq">FAQ</a> : null}
+              <button type="button" data-share="copy">{isJa ? 'リンクをコピー' : 'Copy link'}</button>
+            </div>
+          </div>
         </aside>
       )}
       <article class="prose">
         {verdict && (
-          <div class="verdict"><strong>{isJa ? '結論' : 'Quick verdict'}</strong><p>{verdict}</p></div>
+          <div class="verdict" id="verdict"><strong>{isJa ? '結論' : 'Quick verdict'}</strong><p>{verdict}</p></div>
         )}
         {pros && cons && (
           <div class="pros-cons">

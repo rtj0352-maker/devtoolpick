@@ -21,8 +21,31 @@ const picks = [
   { name: 'Devin Desktop', kind: 'Agentic IDE (ex-Windsurf)', for: 'Fans of Cascade-style multi-step agents', price: 'Free · Pro $20/mo', href: r('best-ai-coding-assistants-2026'), cta: 'Compare in the roundup' },
 ];
 
+// Hero quick pick: list prices checked Oct 21, 2026 (JST); same sources as the linked guides.
+const quick = {
+  ide: {
+    0: ['GitHub Copilot Free', '$0', 'Completions and chat in VS Code, JetBrains, Xcode and more.', 'best-free-ai-coding-assistants-2026'],
+    10: ['GitHub Copilot Pro', '$10/mo', 'The cheapest solid paid tier, and you keep your current IDE.', 'github-copilot-pricing-explained-2026'],
+    20: ['GitHub Copilot Pro', '$10/mo', 'Keeps $10 spare. Move to Pro+ ($39) only after you hit AI Credit limits.', 'github-copilot-pricing-explained-2026'],
+    30: ['Copilot Pro + Claude Pro', '$10 + $20/mo', 'IDE assistant plus a terminal agent for repo-wide work.', 'complete-guide-ai-coding-tools-2026'],
+  },
+  editor: {
+    0: ['Cursor Free', '$0', 'Try the AI-native editor with limited agent and chat use.', 'cursor-vs-github-copilot-2026'],
+    10: ['Cursor Plus', '$8/mo', 'Note: Plus includes Grok models only.', 'cursor-vs-github-copilot-2026'],
+    20: ['Cursor Plus', '$8/mo', 'Grok models only. Premium ($30) is the realistic tier for coding.', 'cursor-vs-github-copilot-2026'],
+    30: ['Cursor Premium', '$30/mo', 'Third-party models, billed separately at API price.', 'cursor-vs-github-copilot-2026'],
+  },
+  terminal: {
+    0: ['Devin Desktop Free', '$0', 'Claude Code needs a paid Claude plan; start with a free agent tier.', 'best-free-ai-coding-assistants-2026'],
+    10: ['GitHub Copilot Pro', '$10/mo', 'Includes Copilot CLI. Claude Code starts at $20.', 'github-copilot-pricing-explained-2026'],
+    20: ['Claude Code (Claude Pro)', '$20/mo', '$17/mo if billed annually. Runs tests and iterates across the repo.', 'claude-code-pricing-explained-2026'],
+    30: ['Claude Code (Claude Pro)', '$20/mo', 'Move to Max ($100) only when you hit limits.', 'claude-code-pricing-explained-2026'],
+  },
+};
+const quickJson = JSON.stringify(Object.fromEntries(Object.entries(quick).map(([k, v]) => [k, Object.fromEntries(Object.entries(v).map(([b, [n, p, w, id]]) => [b, { n, p, w, u: r(id) }]))])));
+
 const categories = [
-  { title: 'Start here', blurb: 'The big picture and the decision page.', ids: ['best-ai-coding-assistants-2026', 'cursor-vs-copilot-vs-devin-desktop-vs-claude-code'] },
+  { title: 'Start here', blurb: 'The big picture and the decision page.', ids: ['complete-guide-ai-coding-tools-2026', 'best-ai-coding-assistants-2026', 'cursor-vs-copilot-vs-devin-desktop-vs-claude-code'] },
   { title: 'On a budget', blurb: 'Free tiers and cheap stacks that still work.', ids: ['best-free-ai-coding-assistants-2026', 'best-ai-coding-tools-for-solo-developers-budget', 'github-copilot-pricing-explained-2026'] },
   { title: 'By job to be done', blurb: 'Python, refactoring, code review and terminal agents.', ids: ['best-ai-coding-tools-for-python-developers-2026', 'best-ai-tools-for-refactoring-large-codebases-2026', 'best-ai-code-review-tools-2026', 'claude-code-review-2026'] },
 ].map((c) => ({ ...c, items: c.ids.map(byId).filter((p) => p !== undefined) }));
@@ -38,6 +61,28 @@ const categories = [
         <p class="eyebrow mono">● Updated {formatDate(lastUpdated, 'en', 'long')} · {posts.length} guides · {jaCount} 日本語</p>
         <h1 class="display">Pick the right<br />AI coding tool.</h1>
         <p class="lead">Take the 30-second quiz, filter the field, or price it for your team — then read the review. Real prices with check dates, no invented benchmarks.</p>
+        <div class="quickpick" data-quick>
+          <script is:inline type="application/json" set:html={quickJson} />
+          <fieldset><legend>Where do you want AI?</legend>
+            <label><input type="radio" name="qp-e" value="ide" checked /><span>My IDE</span></label>
+            <label><input type="radio" name="qp-e" value="editor" /><span>AI editor</span></label>
+            <label><input type="radio" name="qp-e" value="terminal" /><span>Terminal agent</span></label>
+          </fieldset>
+          <fieldset><legend>Monthly budget</legend>
+            <label><input type="radio" name="qp-b" value="0" /><span>$0</span></label>
+            <label><input type="radio" name="qp-b" value="10" checked /><span>~$10</span></label>
+            <label><input type="radio" name="qp-b" value="20" /><span>~$20</span></label>
+            <label><input type="radio" name="qp-b" value="30" /><span>~$30</span></label>
+          </fieldset>
+          <a class="qp-result" data-qp-out aria-live="polite">
+            <span class="qp-kicker mono">Quick pick</span>
+            <strong data-qp-n>GitHub Copilot Pro</strong>
+            <span class="qp-price mono" data-qp-p>$10/mo</span>
+            <span class="qp-why" data-qp-w>The cheapest solid paid tier, and you keep your current IDE.</span>
+            <span class="qp-go mono">Read why →</span>
+          </a>
+          <p class="qp-note mono">List prices checked Oct 21, 2026 (JST). <a href={`${base}tools/finder/`}>Full 4-question finder →</a></p>
+        </div>
       </div>
       <div class="bento">
         <a class="tile tile-lime tile-a" href={`${base}tools/finder/`} data-reveal>
@@ -193,3 +238,26 @@ const categories = [
     </a>
   </section>
 </BaseLayout>
+
+<script>
+  function initQuick() {
+    const root = document.querySelector<HTMLElement>('[data-quick]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+    const data = JSON.parse(root.querySelector('script')!.textContent || '{}');
+    const out = root.querySelector<HTMLAnchorElement>('[data-qp-out]')!;
+    const upd = () => {
+      const e = (root.querySelector('input[name=qp-e]:checked') as HTMLInputElement).value;
+      const b = (root.querySelector('input[name=qp-b]:checked') as HTMLInputElement).value;
+      const r = data[e][b];
+      out.href = r.u;
+      root.querySelector('[data-qp-n]')!.textContent = r.n;
+      root.querySelector('[data-qp-p]')!.textContent = r.p;
+      root.querySelector('[data-qp-w]')!.textContent = r.w;
+      out.classList.remove('flip'); void out.offsetWidth; out.classList.add('flip');
+    };
+    root.addEventListener('change', upd);
+    upd();
+  }
+  document.addEventListener('astro:page-load', initQuick);
+</script>

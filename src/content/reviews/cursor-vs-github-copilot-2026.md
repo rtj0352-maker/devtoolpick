@@ -75,3 +75,7 @@ GitHub states that on individual plans (Free, Pro, Pro+) interaction data may be
 - [GitHub Copilot pricing explained](/devtoolpick/reviews/github-copilot-pricing-explained-2026/)
 - [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)
 - [Compare tools side by side](/devtoolpick/tools/compare/?ids=copilot,cursor)
+
+---
+
+*Part of [The Complete Guide to AI Coding Tools in 2026](/devtoolpick/reviews/complete-guide-ai-coding-tools-2026/): every DevToolPick guide in one place.*

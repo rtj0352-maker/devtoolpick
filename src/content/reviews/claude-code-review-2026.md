@@ -141,3 +141,7 @@ For many strong engineers the winning setup is pragmatic: **keep an IDE assistan
 
 - [Cursor vs GitHub Copilot (2026)](/devtoolpick/reviews/cursor-vs-github-copilot-2026/)
 - [Claude Code pricing explained](/devtoolpick/reviews/claude-code-pricing-explained-2026/)
+
+---
+
+*Part of [The Complete Guide to AI Coding Tools in 2026](/devtoolpick/reviews/complete-guide-ai-coding-tools-2026/): every DevToolPick guide in one place.*

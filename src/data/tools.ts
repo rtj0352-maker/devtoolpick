@@ -8,14 +8,16 @@ export interface Tool {
   agent: boolean; prNative: string; terminal: string; models: string;
   bestFor: string; watch: string; review: string; official: string;
 }
-export const EN_CHECKED = 'Oct 15, 2026 (JST)';
+export const EN_CHECKED = 'Oct 21, 2026 (JST)'; // re-checked Oct 21, list prices unchanged since Oct 15
 export const enGuides = [
+  { id: 'complete-guide-ai-coding-tools-2026', label: 'The complete guide to AI coding tools (2026)' },
   { id: 'cursor-vs-github-copilot-2026', label: 'Cursor vs GitHub Copilot (2026)' },
   { id: 'claude-code-pricing-explained-2026', label: 'Claude Code pricing explained' },
   { id: 'github-copilot-pricing-explained-2026', label: 'GitHub Copilot pricing explained' },
   { id: 'best-free-ai-coding-assistants-2026', label: 'Best free AI coding assistants' },
 ];
 export const jaGuides = [
+  { id: 'ai-tools-complete-guide-2026', label: 'AIツール完全ガイド2026' },
   { id: 'notta-pricing-plans-2026', label: 'Notta 料金プラン比較2026' },
   { id: 'ai-transcription-free-2026', label: 'AI文字起こしを無料で使うには？' },
   { id: 'irusiru-how-to-use-2026', label: 'イルシルの使い方：3ステップ' },

@@ -33,6 +33,10 @@ const isActive = (l: { href: string; exact?: boolean; minor?: boolean }) => (l.e
       <Logo size={30} />
       <span>DevToolPick{lang === 'ja' && <small class="brand-sub">日本語版</small>}</span>
     </a>
+    <button type="button" class="search-btn" data-palette-open aria-haspopup="dialog" aria-label={lang === 'ja' ? 'サイト内検索（Ctrl+K）' : 'Search (Ctrl+K)'}>
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span class="search-label">{lang === 'ja' ? '検索' : 'Search'}</span><kbd>⌘K</kbd>
+    </button>
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="primary-nav" data-menu>
       <span class="sr-only">{lang === 'ja' ? 'メニュー' : 'Menu'}</span><i aria-hidden="true"></i>
     </button>

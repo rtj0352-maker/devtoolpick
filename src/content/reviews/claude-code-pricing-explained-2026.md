@@ -61,3 +61,7 @@ Use our [cost calculator](/devtoolpick/tools/pricing/) to compare Claude Pro/Max
 - [Cursor vs GitHub Copilot (2026)](/devtoolpick/reviews/cursor-vs-github-copilot-2026/)
 - [Best AI tools for refactoring large codebases](/devtoolpick/reviews/best-ai-tools-for-refactoring-large-codebases-2026/)
 - [Find your AI coding tool (quiz)](/devtoolpick/tools/finder/)
+
+---
+
+*Part of [The Complete Guide to AI Coding Tools in 2026](/devtoolpick/reviews/complete-guide-ai-coding-tools-2026/): every DevToolPick guide in one place.*
