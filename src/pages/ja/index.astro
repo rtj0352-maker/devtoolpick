@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReviewCard from '../../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import LatestStrip from '../../components/LatestStrip.astro';
 import { formatDate } from '../../lib/posts';
 
 const posts = (await getCollection('jaReviews', ({ data }) => !data.draft))
@@ -60,6 +61,8 @@ const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ??
     </div>
   </section>
 
+  <LatestStrip lang="ja" />
+
   <section class="container">
     <div class="section-head">
       <h2 class="section-title">注目のレビュー・比較</h2>
@@ -95,7 +98,7 @@ const lastUpdated = new Date(Math.max(...posts.map((p) => (p.data.updatedDate ??
       </div>
       <div class="feature">
         <h3>広告は明記</h3>
-        <p>アフィリエイト広告（PR）を含む記事は冒頭に明記しています。詳しくは<a href={`${base}ja/disclosure/`}>広告について</a>。</p>
+        <p>アフィリエイト広告（PR）を含む記事は冒頭に明記しています。詳しくは<a href={`${base}ja/disclosure/`} style="text-decoration:underline">広告について</a>。</p>
       </div>
     </div>
   </section>

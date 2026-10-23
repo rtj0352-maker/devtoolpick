@@ -1,3 +1,4 @@
+import { track } from './analytics';
 interface Tier { name: string; monthly: number; yearly?: number; note?: string }
 interface Tool { id: string; name: string; form: string; freeTier: boolean; tiers: Tier[]; bestFor: string; watch: string; review: string; official: string }
 type A = Record<string, string>;
@@ -88,7 +89,7 @@ export function initQuiz() {
       const q = opt.closest<HTMLElement>('[data-q]')!;
       answers[q.dataset.q!] = opt.dataset.value!;
       q.querySelectorAll('.opt').forEach((o) => o.classList.toggle('picked', o === opt));
-      setTimeout(() => (i + 1 < qs.length ? show(i + 1) : render()), 180);
+      setTimeout(() => (i + 1 < qs.length ? show(i + 1) : (render(), track('quiz-complete/en', 'Finder quiz completed'))), 180);
     } else if (el.closest('[data-back]')) show(Math.max(0, i - 1));
     else if (el.closest('[data-restart]')) { for (const k in answers) delete answers[k]; root.querySelectorAll('.opt.picked').forEach((o) => o.classList.remove('picked')); show(0); }
   });

@@ -1,5 +1,10 @@
 ---
+import '@fontsource/archivo-black/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
+import displayFont from '@fontsource/archivo-black/files/archivo-black-latin-400-normal.woff2?url';
 import '../styles/global.css';
+import { GOATCOUNTER_URL } from '../lib/analytics';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
@@ -36,6 +41,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <meta name="generator" content={Astro.generator} />
     <meta name="google-site-verification" content="rMeEYwty2E0506an2DrVq-UIi0Cre7VTmuuRxPfZuOo" />
     <title>{fullTitle}</title>
@@ -61,12 +67,13 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+    {GOATCOUNTER_URL && (
+      <script is:inline async data-goatcounter={GOATCOUNTER_URL} src="https://gc.zgo.at/count.js"></script>
+    )}
     {ld.map((o) => <script is:inline type="application/ld+json" set:html={JSON.stringify(o).replace(/</g, '\\u003c')} />)}
     <ClientRouter />
-    <script>import '../scripts/motion.ts';</script>
+    <script>import '../scripts/motion.ts'; import '../scripts/analytics.ts';</script>
   </head>
   <body>
     <div class="read-progress" aria-hidden="true"></div>

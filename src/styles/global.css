@@ -838,3 +838,16 @@ input[type="range"] { accent-color: var(--ink); width: 160px; }
 .guide-links a { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.8rem 1rem; background: var(--stone); color: var(--text); font-weight: 700; text-decoration: none; transition: background 0.15s ease, transform 0.15s ease; }
 .guide-links a:hover { background: var(--lime); color: var(--ink); transform: translateY(-2px); }
 .faq-block h2 { scroll-margin-top: 84px; }
+
+/* Latest strip (homepages) */
+.latest-strip { display: flex; align-items: stretch; gap: 0; margin-top: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg-elevated); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+.latest-label { flex: none; display: flex; align-items: center; padding: 0 0.9rem; background: var(--text); color: var(--bg); font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.latest-strip ul { list-style: none; margin: 0; padding: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.latest-strip li { flex: none; scroll-snap-align: start; border-right: 1px solid var(--border); }
+.latest-strip a { display: grid; gap: 0.2rem; width: 17rem; padding: 0.7rem 0.9rem; color: inherit; text-decoration: none; }
+.latest-strip a:hover .latest-title { text-decoration: underline; }
+.latest-kind { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); }
+.latest-kind[data-kind='news'] { color: #0d0d0d; background: #e4f36b; justify-self: start; padding: 0 0.35rem; }
+.latest-title { font-size: 0.9rem; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.latest-strip time { font-family: var(--mono); font-size: 0.7rem; color: var(--text-soft); }
+@media (max-width: 640px) { .latest-label { writing-mode: vertical-rl; padding: 0.5rem 0.3rem; } .latest-strip a { width: 14rem; } }

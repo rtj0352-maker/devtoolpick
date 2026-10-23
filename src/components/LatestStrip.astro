@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { formatDate } from '../lib/posts';
+
+interface Props { lang?: 'en' | 'ja'; limit?: number }
+const { lang = 'en', limit = 5 } = Astro.props;
+const isJa = lang === 'ja';
+const base = import.meta.env.BASE_URL;
+const pre = isJa ? 'ja/' : '';
+const news = (await getCollection(isJa ? 'jaNews' : 'news', ({ data }) => !data.draft)).map((p) => ({ p, kind: 'news' as const }));
+const reviews = (await getCollection(isJa ? 'jaReviews' : 'reviews', ({ data }) => !data.draft)).map((p) => ({ p, kind: 'reviews' as const }));
+const when = (d: { pubDate: Date; updatedDate?: Date }) => (d.updatedDate ?? d.pubDate).valueOf();
+const items = [...news, ...reviews].sort((a, b) => when(b.p.data) - when(a.p.data) || (a.kind === 'news' ? -1 : 1)).slice(0, limit);
+---
+<section class="container latest-strip" aria-label={isJa ? '最新記事' : 'Latest'}>
+  <span class="latest-label">{isJa ? '最新' : 'Latest'}</span>
+  <ul>
+    {items.map(({ p, kind }) => (
+      <li>
+        <a href={`${base}${pre}${kind}/${p.id}/`}>
+          <span class="latest-kind" data-kind={kind}>{kind === 'news' ? (isJa ? 'ニュース' : 'News') : (isJa ? 'レビュー' : 'Guide')}</span>
+          <span class="latest-title">{p.data.title}</span>
+          <time datetime={(p.data.updatedDate ?? p.data.pubDate).toISOString()}>{formatDate(p.data.updatedDate ?? p.data.pubDate, lang)}</time>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

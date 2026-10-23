@@ -2,6 +2,7 @@
 title: "PHP重大RCE脆弱性（PHP2Shell）の事実とデマ【2026年10月】"
 description: "2026年10月21日（JST）に修正されたPHPの認証不要RCE（CVE-2026-109618／109619）。公式情報で確認できる事実と、拡散された主張の真偽を整理します。"
 pubDate: 2026-10-22
+updatedDate: 2026-10-23
 tags: ["PHP", "セキュリティ", "ニュース", "脆弱性"]
 heroLabel: "セキュリティニュース"
 verdict: "脆弱性は実在し、深刻度はCritical（CVSS v4.0 9.2）です。2026年10月21日22時30分頃（JST）に修正版が公開されました。PHP 8.5.12／8.4.27／8.3.36／8.2.35へ更新し、PHPのワーカーをすべて再起動してください。Cloudflareは公開前に情報が漏れ、攻撃通信を観測したと報告しています。一方、「59%」という数字の出典は確認できませんでした。"
@@ -17,6 +18,14 @@ faq:
 2026年10月21日、PHPは認証不要でリモートコード実行（RCE）が可能になる重大な脆弱性2件を修正する緊急リリースを公開しました。リリース前にXで拡散された投稿（42万回以上表示）について、一次情報と照らし合わせて真偽を確認します。時刻はすべて**日本時間（JST）**です。
 
 > 2026年10月22日2時10分（JST）までに確認した情報源：[Wiz](https://www.wiz.io/blog/php2shell-php-rce)、[Cloudflare](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)、[IPA](https://www.ipa.go.jp/security/security-alert/2026/pre-alert20261021.html)、[php.net](https://www.php.net/archive/2026.php)、[GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w)、[GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)、[NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-109618)、[CERT-EU](https://cert.europa.eu/publications/security-advisories/2026-018/)、[W3Techs](https://w3techs.com/technologies/details/pl-php)。攻撃手法の詳細は掲載しません。
+
+## 追記：10月23日12時（JST）
+
+- **パッチ公開前から攻撃が始まっていた**：[Amazon](https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/)は、公開4日前の10月17日にハニーポットへの攻撃の試みを観測したと発表。公開後は広範な攻撃の試みが続いているとしています。
+- **攻撃成功の確認はまだない**：[Sophos](https://www.sophos.com/en-us/blog/proof-of-concept-exploit-released-for-php-vulnerabilities-109618-109619)は「攻撃成功1件」という先の報告を撤回し、観測されたのはスキャンと失敗した試みのみだと訂正しました。[InstaWP](https://instawp.com/php2shell-exploitation-attempts/)とDataminrも、成功例はないと報告しています。
+- **NVDのスコア**：NVD独自のCVSS v3.1評価は、CVE-2026-109618が9.8、CVE-2026-109619が8.1です（PHP側の評価CVSS v4.0 9.2は変わらず）。
+- **CISA KEV**：10月23日時点で、どちらのCVEも未登録です。
+- **PHP公式**：10月21日以降、新たなリリースはありません。
 
 ## 時系列（JST）
 
@@ -55,4 +64,4 @@ Webリクエストを処理するすべての構成（PHP-FPM、Apache mod_php�
 3. Webサーバーが実際に使っているPHPのバージョンを確認する（`php -v`で表示されるCLI版とは別の場合があります）
 4. 8.1以前を使っている場合は、ベンダーのバックポートを当てたうえで、サポート中のブランチへ移行する計画を立てる
 
-英語版の詳しい手順：[How to check and upgrade your PHP version safely](/devtoolpick/reviews/how-to-check-and-upgrade-php-version-safely/)／[PHPのサポート期限一覧](/devtoolpick/reviews/php-supported-versions-eol-2026/)
+詳しい手順：[PHPバージョンの確認とアップデート手順](/devtoolpick/ja/news/php-version-check-upgrade-2026/)／[PHPのサポート期限一覧](/devtoolpick/news/php-supported-versions-eol-2026/)

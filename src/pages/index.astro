@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReviewCard from '../components/ReviewCard.astro';
 import { getCollection } from 'astro:content';
+import LatestStrip from '../components/LatestStrip.astro';
 import { formatDate } from '../lib/posts';
 
 const posts = (await getCollection('reviews', ({ data }) => !data.draft))
@@ -74,6 +75,8 @@ const categories = [
       </div>
     </div>
   </section>
+
+  <LatestStrip lang="en" />
 
   <section class="container section">
     <div class="section-head" data-reveal>

@@ -62,4 +62,14 @@ const jaReviews = defineCollection({
   schema: reviewSchema({ title: [10, 60], description: [40, 140] }),
 });
 
-export const collections = { reviews, jaReviews };
+// News (/news/, /ja/news/): dated, sourced reports. Same schema as reviews.
+const news = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
+  schema: reviewSchema({ title: [10, 70], description: [50, 200] }),
+});
+const jaNews = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/ja-news' }),
+  schema: reviewSchema({ title: [10, 60], description: [40, 140] }),
+});
+
+export const collections = { reviews, jaReviews, news, jaNews };

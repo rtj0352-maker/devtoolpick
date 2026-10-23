@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReviewCard from '../../../components/ReviewCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('jaNews', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="ニュース"
+  description="DevToolPickの開発者向けニュース。セキュリティや開発ツールの動向を、出典と日本時間付きで報じます。未確認情報は明記します。"
+  lang="ja"
+>
+  <section class="container page-head">
+    <p class="eyebrow">{posts.length} 本の記事</p>
+    <h1>ニュース</h1>
+    <p class="lead">開発者向けセキュリティ・ツールのニュース。時刻は日本時間、未確認情報はその旨を明記しています。</p>
+  </section>
+  <section class="container" style="padding-bottom:3rem">
+    <div class="grid-cards">
+      {posts.map((post) => (
+        <ReviewCard
+          href={`${base}ja/news/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          updatedDate={post.data.updatedDate}
+          tags={post.data.tags}
+          heroLabel={post.data.heroLabel}
+          body={post.body}
+          lang="ja"
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

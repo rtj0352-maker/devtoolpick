@@ -26,7 +26,7 @@ The PHP project supports each branch for about four years: two years of active s
 
 ## Why it matters right now
 
-The [October 21, 2026 critical RCE fixes](/devtoolpick/reviews/php2shell-cve-2026-109618-109619-facts/) shipped only for 8.2–8.5. That's the normal EOL policy at work. The security team made an exception by publishing minimal source backports for 7.4, 8.0 and 8.1, but there were no official releases for those branches.
+The [October 21, 2026 critical RCE fixes](/devtoolpick/news/php2shell-cve-2026-109618-109619-facts/) shipped only for 8.2–8.5. That's the normal EOL policy at work. The security team made an exception by publishing minimal source backports for 7.4, 8.0 and 8.1, but there were no official releases for those branches.
 
 ## How many sites are behind?
 
@@ -36,4 +36,4 @@ According to [W3Techs](https://w3techs.com/technologies/details/pl-php) (Oct 21,
 
 - **New projects:** 8.4 or 8.5, if your framework supports it.
 - **On 8.2:** plan the move before **Dec 31, 2026**.
-- **On 8.1 or older:** use a vendor LTS or distro backport now, and upgrade. See [how to upgrade safely](/devtoolpick/reviews/how-to-check-and-upgrade-php-version-safely/).
+- **On 8.1 or older:** use a vendor LTS or distro backport now, and upgrade. See [how to upgrade safely](/devtoolpick/news/how-to-check-and-upgrade-php-version-safely/).

@@ -56,7 +56,8 @@ function host(url) {
   }
 }
 
-const isAmazon = (h) => /(^|\.)amazon\.[a-z.]+$/.test(h) || h === 'amzn.to' || h === 'amzn.asia';
+// Retail storefronts only; AWS/corporate subdomains (aws.amazon.com, aboutamazon.com) are ordinary sources.
+const isAmazon = (h) => (/(^|\.)amazon\.[a-z.]+$/.test(h) && !/(^|\.)(aws|developer|docs)\.amazon\./.test(h)) || h === 'amzn.to' || h === 'amzn.asia';
 const isA8 = (h) => h === 'a8.net' || h.endsWith('.a8.net');
 const amazonRe = new RegExp(`^https://www\\.amazon\\.co\\.jp/dp/[A-Z0-9]{10}\\?tag=${cfg.amazonTag}$`);
 const a8LinkRe = /^https:\/\/px\.a8\.net\/svt\/ejp\?a8mat=([A-Z0-9+]+)$/;

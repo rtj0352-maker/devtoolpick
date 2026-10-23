@@ -20,13 +20,16 @@ interface Props {
   pros?: string[];
   cons?: string[];
   faq?: { q: string; a: string }[];
+  section?: 'reviews' | 'news';
 }
 
-const { title, description, pubDate, updatedDate, tags = [], heroLabel, lang = 'en', headings = [], body, verdict, pros, cons, faq } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], heroLabel, lang = 'en', headings = [], body, verdict, pros, cons, faq, section = 'reviews' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const isJa = lang === 'ja';
-const collection = isJa ? 'jaReviews' : 'reviews';
-const reviewsPath = isJa ? `${base}ja/reviews/` : `${base}reviews/`;
+const isNews = section === 'news';
+const collection = isNews ? (isJa ? 'jaNews' : 'news') : isJa ? 'jaReviews' : 'reviews';
+const reviewsPath = `${base}${isJa ? 'ja/' : ''}${section}/`;
+const sectionName = isNews ? (isJa ? 'ニュース' : 'News') : isJa ? 'レビュー' : 'Reviews';
 
 // Related: most shared tags first, then newest.
 const related = (await getCollection(collection, ({ data }) => !data.draft))
@@ -42,7 +45,7 @@ const site = Astro.site!;
 const url = new URL(Astro.url.pathname, site).toString();
 const jsonLd: object[] = [
   {
-    '@context': 'https://schema.org', '@type': 'Article', headline: title, description,
+    '@context': 'https://schema.org', '@type': isNews ? 'NewsArticle' : 'Article', headline: title, description,
     datePublished: pubDate.toISOString(), dateModified: (updatedDate ?? pubDate).toISOString(),
     inLanguage: isJa ? 'ja-JP' : 'en', mainEntityOfPage: url, image: new URL(`${base}og-default.png`, site).toString(),
     author: { '@type': 'Organization', name: isJa ? 'DevToolPick 編集部' : 'DevToolPick Editorial', url: new URL(base, site).toString() },
@@ -53,7 +56,7 @@ const jsonLd: object[] = [
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: isJa ? 'ホーム' : 'Home', item: new URL(isJa ? `${base}ja/` : base, site).toString() },
-      { '@type': 'ListItem', position: 2, name: isJa ? 'レビュー' : 'Reviews', item: new URL(reviewsPath, site).toString() },
+      { '@type': 'ListItem', position: 2, name: sectionName, item: new URL(reviewsPath, site).toString() },
       { '@type': 'ListItem', position: 3, name: title, item: url },
     ],
   },
@@ -66,7 +69,7 @@ const mins = readingMinutes(body, lang);
     <nav class="breadcrumbs" aria-label={isJa ? 'パンくずリスト' : 'Breadcrumb'}>
       <a href={isJa ? `${base}ja/` : base}>{isJa ? 'ホーム' : 'Home'}</a>
       <span aria-hidden="true">/</span>
-      <a href={reviewsPath}>{isJa ? 'レビュー' : 'Reviews'}</a>
+      <a href={reviewsPath}>{sectionName}</a>
     </nav>
     <header class="article-head">
       {heroLabel && <span class="badge">{heroLabel}</span>}

@@ -14,7 +14,7 @@ faq:
     a: "Possibly. Distributions often backport fixes without changing the upstream version. Check your distro's security tracker for CVE-2026-109618 and CVE-2026-109619."
 ---
 
-PHP's October 21, 2026 (JST) security releases fix two critical pre-auth RCE vulnerabilities (see [the facts](/devtoolpick/reviews/php2shell-cve-2026-109618-109619-facts/)). Here's how to confirm what you run and update without breaking things.
+PHP's October 21, 2026 (JST) security releases fix two critical pre-auth RCE vulnerabilities (see [the facts](/devtoolpick/news/php2shell-cve-2026-109618-109619-facts/)). Here's how to confirm what you run and update without breaking things.
 
 > Version numbers come from [php.net](https://www.php.net/archive/2026.php) and the [supported versions page](https://www.php.net/supported-versions.php), checked on **October 22, 2026 (JST)**.
 
@@ -53,5 +53,5 @@ Moving across branches (for example 7.4 to 8.3) can break code. Test it in stagi
 
 ## Related
 
-- [PHP2Shell facts vs rumor](/devtoolpick/reviews/php2shell-cve-2026-109618-109619-facts/)
-- [PHP supported versions and EOL dates in 2026](/devtoolpick/reviews/php-supported-versions-eol-2026/)
+- [PHP2Shell facts vs rumor](/devtoolpick/news/php2shell-cve-2026-109618-109619-facts/)
+- [PHP supported versions and EOL dates in 2026](/devtoolpick/news/php-supported-versions-eol-2026/)
